@@ -1,0 +1,7 @@
+npx create-react-app . --template typescript @types/node @types/react @type/react-dom @types/jest
+npm i react-router-dom
+npm i --save-dev @types/react-router-dom
+npm i react-query @tanstack/react-query
+npm i gh-pages --save-dev
+npm i recoil react-hook-form
+npm i react-helmet @types/react-helmet
