@@ -5,3 +5,4 @@ npm i react-query @tanstack/react-query
 npm i gh-pages --save-dev
 npm i recoil react-hook-form
 npm i react-helmet @types/react-helmet
+npm i sass
