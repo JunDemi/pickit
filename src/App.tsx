@@ -1,9 +1,9 @@
 import React from 'react';
-
+import Notify from 'components/header/Notify';
 
 function App() {
   return (
-      <h1>Hello</h1>
+      <Notify />
   );
 }
 

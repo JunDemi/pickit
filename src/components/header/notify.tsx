@@ -1,37 +1,23 @@
-import React, { useState } from "react";
-import FocusTrap from "focus-trap-react";
+import React from "react";
+import usePopup from "./usePopup";
+import Popup from './Popup';
 
 const Notify = () => {
-  const [showing, setShowing] = useState<boolean>(false);
+  const notifyPopup = usePopup();
 
-  const onPopupClose = () => {
-    console.log("POPUP CLOSE!!");
+  const onNotifyOpen = (): void => {
+    notifyPopup.toggle()
   };
 
   return (
-    <div>
-      <button onClick={() => setShowing(true)}>focusTrap Outer!</button>
-      <FocusTrap
-        active={showing}
-        focusTrapOptions={{
-          onDeactivate: onPopupClose,
-          clickOutsideDeactivates: true,
-        }}
-      >
-        <div
-          style={{
-            display: showing ? "block" : "none",
-            width: "500px",
-            height: "500px",
-            background: "black",
-          }}
-        >
-          <button type="button" onClick={() => setShowing(false)}>
-            focusTrap Inner!
-          </button>
-        </div>
-      </FocusTrap>
-    </div>
+    <>
+      <button type='button' onClick={onNotifyOpen}>focusTrap Outer!</button>
+      <Popup popupHooks={notifyPopup}>
+        <button type="button" onClick={() => notifyPopup.toggle()}>
+          focusTrap Inner!
+        </button>
+      </Popup>
+    </>
   );
 };
 

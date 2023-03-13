@@ -1,0 +1,10 @@
+.popup-wrapper {
+    display: none;
+    background-color: #000;
+    opacity: 0.9;
+    width: 500px;
+    height: 500px;
+    &.show {
+        display: block;
+    }
+}
