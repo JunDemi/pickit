@@ -10,14 +10,15 @@
     }
 
     &.large {
-        width: 300px;
+        width: 320px;
     }
 }
 
 .input-wrapper {
+    width: 100%;
     position: relative;
     display: flex;
-    padding: 16px;
+    padding: 16px 25px 16px 16px;
     background-color: white;
     z-index: 99;
 
@@ -35,17 +36,7 @@
     &:focus-within {
         // box-shadow: 0 5px 5px rgb(0, 0, 0, 0.3);
     }
-}
 
-.input-autocomplete {
-    flex-grow: 1;
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    color: black;
 
     &.small {
         width: 100px;
@@ -60,10 +51,22 @@
     }
 }
 
+.input-autocomplete {
+    width: 50px;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: black;
+}
+
 .btn-clear {
     position: absolute;
     width: 30px;
-    right: 0;
+    right: 0px;
     background-color: transparent;
     border: none;
     cursor: pointer;
