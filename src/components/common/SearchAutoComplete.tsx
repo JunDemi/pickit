@@ -13,7 +13,7 @@ interface Props {
 }
 
 const MOCK_DATA = [
-    { label: "test", value: "test" },
+    { label: "test1", value: "test" },
     { label: "test2", value: "test2" },
     { label: "test3", value: "test3" },
     { label: "test4", value: "test4" },
