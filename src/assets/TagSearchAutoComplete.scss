@@ -1,20 +1,20 @@
-.container {
+.tag-search-container {
     margin: 10px;
 
     &.small {
-        width: 100px;
+        width: 120px;
     }
 
     &.medium {
-        width: 200px;
+        width: 520px;
     }
 
     &.large {
-        width: 320px;
+        width: 1020px;
     }
 }
 
-.input-wrapper {
+.tag-search-content-wrapper {
     width: 100%;
     position: relative;
     display: flex;
@@ -24,13 +24,13 @@
 
     &.active {
         border-radius: 20px 20px 0 0;
-        border: 1px solid lightgray;
+        border: 3px solid black;
         border-bottom: 0px;
     }
 
     &.inactive {
         border-radius: 20px 20px 20px 20px;
-        border: 1px solid lightgray;
+        border: 3px solid black;
     }
 
     &:focus-within {
@@ -43,16 +43,24 @@
     }
 
     &.medium {
-        width: 200px;
+        width: 500px;
     }
 
     &.large {
-        width: 300px;
+        width: 1000px;
     }
 }
 
-.input-autocomplete {
+.tag-search-input-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 96%;
+    overflow: hidden;
+}
+
+.tag-search-input-autocomplete {
     width: 50px;
+    height: 25px;
     flex-grow: 1;
     margin: 0;
     padding: 0;
@@ -63,16 +71,29 @@
     color: black;
 }
 
-.btn-clear {
+.tag-search-btn-clear {
     position: absolute;
-    width: 30px;
-    right: 0px;
+    top: 12px;
+    width: 32px;
+    height: 32px;
+    right: 20px;
     background-color: transparent;
     border: none;
     cursor: pointer;
 }
 
-.ul-dropdown {
+.tag-search-btn-search {
+    position: absolute;
+    top: 12px;
+    width: 32px;
+    height: 32px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.tag-search-ul-dropdown {
     position: absolute;
     display: block;
     list-style: none;
@@ -87,11 +108,11 @@
     }
 
     &.medium {
-        width: 200px;
+        width: 500px;
     }
 
     &.large {
-        width: 300px;
+        width: 1000px;
     }
 
     li {
@@ -105,6 +126,7 @@
 }
 
 $tagBackgroundColor: #79d8e5;
+$tagDarkerBackgroundColor: #5cbfcd;
 
 .tag {
     background-color: $tagBackgroundColor;
@@ -113,4 +135,8 @@ $tagBackgroundColor: #79d8e5;
     margin: 0px 5px 5px 0px;
     padding-left: 5px;
     padding-right: 5px;
+    cursor: pointer;
+    &:hover {
+        background-color: $tagDarkerBackgroundColor;
+    }
 }
