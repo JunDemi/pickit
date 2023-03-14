@@ -1,4 +1,4 @@
-.search-container {
+.tag-search-container {
     margin: 10px;
 
     &.small {
@@ -14,7 +14,7 @@
     }
 }
 
-.search-content-wrapper {
+.tag-search-content-wrapper {
     width: 100%;
     position: relative;
     display: flex;
@@ -37,12 +37,13 @@
         // box-shadow: 0 5px 5px rgb(0, 0, 0, 0.3);
     }
 
+
     &.small {
         width: 100px;
     }
 
     &.medium {
-        width: 520px;
+        width: 500px;
     }
 
     &.large {
@@ -50,15 +51,14 @@
     }
 }
 
-.search-input-wrapper {
+.tag-search-input-wrapper {
     display: flex;
     flex-wrap: wrap;
     width: 96%;
     overflow: hidden;
 }
 
-
-.search-input-autocomplete {
+.tag-search-input-autocomplete {
     width: 50px;
     height: 25px;
     flex-grow: 1;
@@ -71,7 +71,7 @@
     color: black;
 }
 
-.search-btn-clear {
+.tag-search-btn-clear {
     position: absolute;
     top: 12px;
     width: 32px;
@@ -82,7 +82,7 @@
     cursor: pointer;
 }
 
-.search-btn-search {
+.tag-search-btn-search {
     position: absolute;
     top: 12px;
     width: 32px;
@@ -93,7 +93,7 @@
     cursor: pointer;
 }
 
-.search-ul-dropdown {
+.tag-search-ul-dropdown {
     position: absolute;
     display: block;
     list-style: none;
@@ -108,7 +108,7 @@
     }
 
     &.medium {
-        width: 520px;
+        width: 500px;
     }
 
     &.large {
@@ -119,9 +119,24 @@
         cursor: pointer;
         padding: 0 16px;
         color: black;
-
         &.selected {
             background-color: lightgray;
         }
+    }
+}
+
+$tagBackgroundColor: #79d8e5;
+$tagDarkerBackgroundColor: #5cbfcd;
+
+.tag {
+    background-color: $tagBackgroundColor;
+    color: white;
+    width: max-content;
+    margin: 0px 5px 5px 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+    &:hover {
+        background-color: $tagDarkerBackgroundColor;
     }
 }
