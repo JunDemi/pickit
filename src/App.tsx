@@ -1,10 +1,7 @@
-import React from 'react';
-import Notify from 'components/header/Notify';
+import React from "react";
 
 function App() {
-  return (
-      <Notify />
-  );
+  return <div></div>;
 }
 
 export default App;
