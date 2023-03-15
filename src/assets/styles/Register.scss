@@ -45,6 +45,14 @@
   margin: 10px 0px 10px 30px;
 }
 
+.register-input-autocomplete-wrapper {
+  margin-left: 30px;
+  padding: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex: 3;
+}
+
 .register-input-autocomplete {
   width: 50px;
   height: 25px;
@@ -64,6 +72,14 @@
   // justify-content: center;
   align-items: center;
   margin: 10px 0px 10px 10px;
+}
+
+.register-input-label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 20%;
+  flex: 1;
+  text-align: end;
 }
 
 .register-input-wrapper-right {
@@ -86,6 +102,19 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.register-description {
+  color: #707070;
+  font-size: 0.8rem;
+  margin-right: 10px;
+}
+
+.register-login-description {
+  font-size: 0.8rem;
+  color: #707070;
+  margin: 30px 0 10px 0;
+  text-align: center;
 }
 
 @mixin deleteDefaultButtonStyle {
@@ -118,6 +147,11 @@
   &:hover {
     background-color: rgb(85, 80, 80);
   }
+}
+
+.register-sign-up-button-wrapper {
+  margin-left: 40px;
+  flex: 2;
 }
 
 .register-sign-up-button {

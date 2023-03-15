@@ -12,40 +12,16 @@ function Register() {
         <hr className="register-hr" />
         <div className="register-input-wrapper">
           <div className="register-input-wrapper-left">
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "1.1rem",
-                width: "20%",
-                flex: "1",
-                textAlign: "end",
-              }}
-            >
-              닉네임 :{" "}
-            </span>
-            <div
-              style={{
-                marginLeft: "30px",
-                padding: "10px",
-                border: "1px solid black",
-                display: "flex",
-                flex: "3",
-              }}
-            >
+            <span className="register-input-label">닉네임 :</span>
+            <div className="register-input-autocomplete-wrapper">
               <input className="register-input-autocomplete" type="text" />
             </div>
-            <div style={{ marginLeft: "40px", flex: "2" }}>
+            <div className="register-sign-up-button-wrapper">
               <button className="register-sign-up-button">중복 확인</button>
             </div>
           </div>
           <div className="register-input-wrapper-right">
-            <span
-              style={{
-                color: "#707070",
-                fontSize: "0.8rem",
-                marginRight: "10px",
-              }}
-            >
+            <span className="register-description">
               * (영문소문자/숫자, 4~16자)
             </span>
           </div>
@@ -53,90 +29,34 @@ function Register() {
         <hr className="register-hr" />
         <div className="register-input-wrapper">
           <div className="register-input-wrapper-left">
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "1.1rem",
-                width: "20%",
-                flex: "1",
-                textAlign: "end",
-              }}
-            >
-              이메일 :{" "}
-            </span>
-            <div
-              style={{
-                marginLeft: "30px",
-                padding: "10px",
-                border: "1px solid black",
-                display: "flex",
-                flex: "3",
-              }}
-            >
+            <span className="register-input-label">이메일 : </span>
+            <div className="register-input-autocomplete-wrapper">
               <input className="register-input-autocomplete" type="text" />
             </div>
-            <div style={{ marginLeft: "40px", flex: "2" }}></div>
+            <div className="register-sign-up-button-wrapper"></div>
           </div>
           <div className="register-input-wrapper-right">
-            <span
-              style={{
-                color: "#707070",
-                fontSize: "0.8rem",
-                marginRight: "10px",
-              }}
-            ></span>
+            <span className="register-description"></span>
           </div>
         </div>
         <hr className="register-hr" />
         <div className="register-input-wrapper">
           <div className="register-input-wrapper-left">
-            <span
-              style={{
-                fontWeight: "bold",
-                fontSize: "1.1rem",
-                width: "20%",
-                flex: "1",
-                textAlign: "end",
-              }}
-            >
-              패스워드 :
-            </span>
-            <div
-              style={{
-                marginLeft: "30px",
-                padding: "10px",
-                border: "1px solid black",
-                display: "flex",
-                flex: "3",
-              }}
-            >
+            <span className="register-input-label">패스워드 :</span>
+            <div className="register-input-autocomplete-wrapper">
               <input className="register-input-autocomplete" type="text" />
             </div>
-            <div style={{ marginLeft: "40px", flex: "2" }}></div>
+            <div className="register-sign-up-button-wrapper"></div>
           </div>
           <div className="register-input-wrapper-right">
-            <span
-              style={{
-                color: "#707070",
-                fontSize: "0.8rem",
-                marginRight: "10px",
-              }}
-            ></span>
+            <span className="register-description"></span>
           </div>
         </div>
         <hr className="register-hr" />
         <div className="register-footer">
           <div className="register-footer-buttons-wrapper">
             <button className="register-sign-up-button">계정 생성</button>
-            {/* rgb(133 133 133); */}
-            <span
-              style={{
-                fontSize: "0.8rem",
-                color: "#707070",
-                margin: "30px 0 10px 0",
-                textAlign: "center",
-              }}
-            >
+            <span className="register-login-description">
               이미 가입 된 계정이 있으시다면?
             </span>
             <button className="register-sign-in-button">로그인</button>
