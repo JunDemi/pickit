@@ -201,6 +201,58 @@
           color: #2a7df9;
         }
       }
+
+      .my-profile-gallery-worldcup-box {
+        display: flex;
+        justify-content: space-between;
+        padding: 42px 0px 62px 0px;
+
+        .my-profile-gallery-worldcup-card {
+          display: flex;
+          flex-direction: column;
+
+          .my-profile-gallery-worldcup-image-wrapper {
+            width: 160px;
+            height: 180px;
+            padding: 0px 0px 14px 0px;
+            display: flex;
+
+            .my-profile-gallery-worldcup-image {
+              width: 50%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .my-profile-gallery-worldcup-title {
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 700;
+            color: #000000;
+            padding: 0px 0px 21px 0px;
+          }
+
+          .my-profile-gallery-worldcup-status {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            .my-profile-gallery-status-index {
+              font-size: 12px;
+              line-height: 16px;
+              font-weight: 400;
+              color: #888888;
+            }
+
+            .my-profile-gallssery-status-date {
+              font-size: 12px;
+              line-height: 16px;
+              font-weight: 700;
+              color: #888888;
+            }
+          }
+        }
+      }
     }
   }
 }
