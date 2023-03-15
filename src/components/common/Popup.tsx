@@ -8,11 +8,12 @@ interface popupTypes {
     isShowing: boolean;
     toggle: (flag?: boolean) => void;
   };
+  className?: string;
   children: React.ReactNode;
 }
 
 const Popup = (props: popupTypes) => {
-  const { popupHooks } = props;
+  const { popupHooks, className } = props;
 
   const onPopupDeactive = (): void => {
     setTimeout(() => {
@@ -28,7 +29,11 @@ const Popup = (props: popupTypes) => {
         clickOutsideDeactivates: true,
       }}
     >
-      <div className={`popup-wrapper ${popupHooks.isShowing ? "show" : ""}`}>
+      <div
+        className={`popup-wrapper ${className} ${
+          popupHooks.isShowing ? "show" : ""
+        }`}
+      >
         {props.children}
       </div>
     </FocusTrap>
