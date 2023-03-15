@@ -12,11 +12,24 @@ interface StatusIF {
   article: number;
 }
 
+interface FollowerIF {
+  image: string;
+  nickname: string;
+}
+
 type InKeyType = { [key: string]: number };
+
+interface WorldcupCardIF {
+  leftImage: string;
+  rightImage: string;
+  title: string;
+  total: number;
+  created: string;
+}
 
 interface GalleryElementParamIF {
   type: string;
-  data: string[];
+  data: any;
 }
 
 interface GalleryBoxIF extends GalleryElementParamIF {
@@ -29,7 +42,21 @@ const ProfileGalleryBox: Function = ({ title, height, data, type }: GalleryBoxIF
   const RenderElement: Function = ({ type, data }: GalleryElementParamIF) => {
     switch (type) {
       case "tag":
-        return data.map((tag) => <span className="my-profile-gallery-tag">{`#${tag}`}</span>);
+        return data.map((tag: string[], index: number) => <span key={index} className="my-profile-gallery-tag">{`#${tag}`}</span>);
+      case "worldcup":
+        return data.map((worldcup: WorldcupCardIF, index: number) => (
+          <div key={index} className="my-profile-gallery-worldcup-card">
+            <div className="my-profile-gallery-worldcup-image-wrapper">
+              <img className="my-profile-gallery-worldcup-image" src={worldcup.leftImage} alt="" />
+              <img className="my-profile-gallery-worldcup-image" src={worldcup.rightImage} alt="" />
+            </div>
+            <h3 className="my-profile-gallery-worldcup-title">{worldcup.title}</h3>
+            <div className="my-profile-gallery-worldcup-status">
+              <span className="my-profile-gallery-status-index">{`[${worldcup.total}명 참여]`}</span>
+              <span className="my-profile-gallssery-status-date">{worldcup.created}</span>
+            </div>
+          </div>
+        ));
       default:
         return null;
     }
@@ -51,14 +78,18 @@ const ProfileStatusBox: Function = ({ profile, status }: { profile: ProfileIF; s
   const { nickname, introduction }: ProfileIF = profile;
 
   const ProfileStatusNumber: Function = ({ status }: { status: InKeyType }): JSX.Element[] => {
-    return Object.keys(status).map(
-      (key: string): JSX.Element => (
-        <div className="my-profile-info-text-box">
+    return Object.keys(status).map((key: string, index: number): JSX.Element => {
+      const [keyword, ...rest] = key;
+      return (
+        <div key={index} className="my-profile-info-text-box">
           <h2 className="my-profile-status-info">{status[key]}</h2>
-          <span className="my-profile-status-sub">{key}</span>
+          <span className="my-profile-status-sub">
+            {keyword.toUpperCase()}
+            {rest}
+          </span>
         </div>
-      )
-    );
+      );
+    });
   };
 
   return (
@@ -84,15 +115,53 @@ const ProfileStatusBox: Function = ({ profile, status }: { profile: ProfileIF; s
 const MyProfile: Function = (): JSX.Element => {
   const [profile, setProfile] = useState<ProfileIF>({ nickname: "", introduction: "" });
   const [status, setStatus] = useState<StatusIF>({ follow: 0, like: 0, article: 0 });
+  const [worldcup, setWorldcup] = useState<WorldcupCardIF[]>([]);
+  const [follower, setFollower] = useState<FollowerIF[]>([{ image: "", nickname: "" }]);
+
   // eslint-disable-next-line
-  const [tag, setTag] = useState<string[]>(["아이돌", "브레이브걸스", "게임", "강아지", "고양이", "의류"]);
+  const [tag, setTag] = useState<string[]>([]);
 
   const onLoad = /* async */ () => {
     const profileD: ProfileIF = { nickname: "Lim Min Hyeok", introduction: "자기소개를 작성해주세요." };
     const statusD: StatusIF = { follow: 12, like: 11, article: 8 };
+    const worldcupD: WorldcupCardIF[] = [
+      {
+        leftImage: require("../../assets/images/yuna2.jpg"),
+        rightImage: require("../../assets/images/yujeong.jpg"),
+        title: "여가수 외모 순위",
+        total: 92,
+        created: "2023-03-07",
+      },
+      {
+        leftImage: require("../../assets/images/yuna2.jpg"),
+        rightImage: require("../../assets/images/yujeong.jpg"),
+        title: "여가수 외모 순위",
+        total: 92,
+        created: "2023-03-07",
+      },
+      {
+        leftImage: require("../../assets/images/yuna2.jpg"),
+        rightImage: require("../../assets/images/yujeong.jpg"),
+        title: "여가수 외모 순위",
+        total: 92,
+        created: "2023-03-07",
+      },
+    ];
+    const followerD: FollowerIF[] = [
+      { image: "image", nickname: "So jiwoo" },
+      { image: "image", nickname: "So jiwoo" },
+      { image: "image", nickname: "So jiwoo" },
+      { image: "image", nickname: "So jiwoo" },
+      { image: "image", nickname: "So jiwoo" },
+    ];
+
+    const tagD: string[] = ["아이돌", "브레이브걸스", "게임", "강아지", "고양이", "의류"];
 
     setProfile(profileD);
     setStatus(statusD);
+    setWorldcup(worldcupD);
+    setFollower(followerD);
+    setTag(tagD);
   };
 
   useEffect(() => {
@@ -105,7 +174,7 @@ const MyProfile: Function = (): JSX.Element => {
         <div className="my-profile-status-wrapper">
           <ProfileStatusBox profile={profile} status={status} />
           <ProfileGalleryBox title="관심사" type="tag" data={tag} />
-          <ProfileGalleryBox title="나의 개최 월드컵" type="card" height={481} />
+          <ProfileGalleryBox title="나의 개최 월드컵" type="worldcup" data={worldcup} />
           <ProfileGalleryBox title="참여 월드컵 기록" type="rank" height={481} />
           <ProfileGalleryBox title="댓글 기록" type="comment" height={481} />
         </div>
@@ -116,31 +185,13 @@ const MyProfile: Function = (): JSX.Element => {
           </div>
           <div className="my-profile-follower-box">
             <h1 className="my-profile-follower-title">팔로잉 / 팔로워</h1>
-            <div className="my-profile-follower-status-box">
-              {/* 이미지 처리 필요 */}
-              <div className="my-profile-follower-status-profile" />
-              <span className="my-profile-follower-status-nickname">So jiwoo</span>
-            </div>
-            <div className="my-profile-follower-status-box">
-              {/* 이미지 처리 필요 */}
-              <div className="my-profile-follower-status-profile" />
-              <span className="my-profile-follower-status-nickname">So jiwoo</span>
-            </div>
-            <div className="my-profile-follower-status-box">
-              {/* 이미지 처리 필요 */}
-              <div className="my-profile-follower-status-profile" />
-              <span className="my-profile-follower-status-nickname">So jiwoo</span>
-            </div>
-            <div className="my-profile-follower-status-box">
-              {/* 이미지 처리 필요 */}
-              <div className="my-profile-follower-status-profile" />
-              <span className="my-profile-follower-status-nickname">So jiwoo</span>
-            </div>
-            <div className="my-profile-follower-status-box">
-              {/* 이미지 처리 필요 */}
-              <div className="my-profile-follower-status-profile" />
-              <span className="my-profile-follower-status-nickname">So jiwoo</span>
-            </div>
+            {follower.map((item: FollowerIF, index: number) => (
+              <div key={index} className="my-profile-follower-status-box">
+                {/* 이미지 처리 필요 */}
+                <div className="my-profile-follower-status-profile" />
+                <span className="my-profile-follower-status-nickname">{item.nickname}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
