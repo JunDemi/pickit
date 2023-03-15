@@ -16,7 +16,7 @@
   }
 
   .myInfo {
-    padding: 3rem 2rem 2rem 2rem;
+    padding: 3rem 3rem 2rem 3rem;
     font-weight: 700;
 
     .info-top {
@@ -113,6 +113,9 @@
     }
 
     .popup-content {
+      height: 20rem;
+      overflow-y: auto;
+
       li {
         display: flex;
         flex-direction: column;
@@ -121,13 +124,24 @@
         align-content: flex-start;
         justify-content: space-between;
         padding: 1rem 1rem 1rem 1.5rem;
-
+        cursor: pointer;
+        
         img {
           border-radius: 50%;
           width: 75px;
           height: 75px;
           margin-right: 1rem;
         }
+      }
+
+      .no-data {
+        position: absolute;
+        top: 50%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        margin: auto;
       }
     }
   }
