@@ -1,10 +1,134 @@
 .popup-wrapper {
-    display: none;
-    background-color: #000;
-    opacity: 0.9;
-    width: 500px;
-    height: 500px;
-    &.show {
-        display: block;
+  display: none;
+  position: absolute;
+  left: 50px;
+  background-color: #000;
+  opacity: 0.9;
+  border-radius: 20px;
+
+  &.show {
+    display: block;
+  }
+
+  &.inHeader {
+    width: 35%;
+    height: 40%;
+  }
+
+  .myInfo {
+    padding: 3rem 2rem 2rem 2rem;
+    font-weight: 700;
+
+    .info-top {
+      display: flex;
+      height: 25%;
+
+      img {
+        width: 25%;
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      .info-content {
+        width: 75%;
+        margin-left: 2rem;
+        color: white;
+
+        h1 {
+          font-size: 40px;
+        }
+
+        .info-items {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 1rem;
+
+          .info-item {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+            .info-value {
+              font-size: 36px;
+            }
+
+            .info-label {
+              font-size: 20px;
+            }
+          }
+        }
+      }
     }
+
+    .info-bottom {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      color: white;
+      div {
+        display: flex;
+        border-top: 1px solid white;
+        padding: 1rem 0;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .icon {
+        width: 34px;
+        height: 34px;
+      }
+      .icon_logout {
+        display: inline-block;
+        background: url("../images/icon_logout.svg") no-repeat;
+      }
+      .icon_setting {
+        display: inline-block;
+        background: url("../images/icon_setting.svg") no-repeat;
+      }
+
+      span {
+        margin: auto 2rem auto 0;
+        line-height: normal;
+      }
+    }
+  }
+
+  .notify {
+    color: white;
+    font-weight: 700;
+
+    .popup-header {
+      padding: 1rem 1rem 1rem 1.5rem;
+      border-bottom: 1px solid white;
+      h1 {
+        display: inline-block;
+        font-size: 25px;
+        line-height: normal;
+      }
+      span {
+        display: inline-block;
+        font-size: 15px;
+        margin-left: 0.5rem;
+      }
+    }
+
+    .popup-content {
+      li {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 6.5rem;
+        align-content: flex-start;
+        justify-content: space-between;
+        padding: 1rem 1rem 1rem 1.5rem;
+
+        img {
+          border-radius: 50%;
+          width: 75px;
+          height: 75px;
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
 }
