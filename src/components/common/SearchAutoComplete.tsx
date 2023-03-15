@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../../assets/SearchAutoComplete.scss';
+import '../../assets/styles/SearchAutoComplete.scss';
 import { ReactComponent as SearchImage } from '../../assets/images/reading-glasses.svg'
 
 

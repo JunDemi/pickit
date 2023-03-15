@@ -96,11 +96,79 @@
     .my-profile-alert-wrapper {
       width: 260px;
 
-      .my-profile-alert-box {
+      .my-profile-rank-box {
         width: 100%;
+        padding: 26px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff;
+        margin: 0px 0px 26px 0px;
+
+        .my-profile-rank-title {
+          width: 140px;
+          font-size: 16px;
+          line-height: 22px;
+          font-weight: 600;
+          text-align: center;
+          padding: 0px 0px 15px 0px;
+        }
+
+        .my-profile-rank-button {
+          width: 180px;
+          font-size: 16px;
+          line-height: 16px;
+          font-weight: 600;
+          padding: 6px 0px;
+          color: #ca9a8e;
+          border: 2px solid #d1d1d1;
+          border-radius: 25px;
+          text-align: center;
+          background-color: #ffffff;
+        }
       }
 
       .my-profile-follower-box {
+        width: 100%;
+        padding: 20px 25px 56px 25px;
+        background-color: #ffffff;
+
+        .my-profile-follower-title {
+          font-size: 22px;
+          line-height: 22px;
+          font-weight: 600;
+          color: #616161;
+          padding: 0px 0px 30px 0px;
+        }
+
+        .my-profile-follower-status-box {
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding: 0px 0px 22px 0px;
+
+          &:last-child {
+            padding: 0px 0px 0px 0px;
+          }
+
+          .my-profile-follower-status-profile {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            // 임시 백그라운드 컬러 처리
+            background-color: #d1d1d1;
+            margin: 0px 18px 0px 0px;
+          }
+
+          .my-profile-follower-status-nickname {
+            font-size: 16px;
+            line-height: 16px;
+            font-weight: 600;
+            color: #616161;
+          }
+        }
       }
     }
 
@@ -117,6 +185,21 @@
         line-height: 24px;
         font-weight: 700;
         color: #616161;
+      }
+
+      .my-profile-gallery-tag-box {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 22px 0px 29px 0px;
+
+        .my-profile-gallery-tag {
+          font-size: 20px;
+          line-height: 20px;
+          font-weight: 700;
+          color: #2a7df9;
+        }
       }
     }
   }
