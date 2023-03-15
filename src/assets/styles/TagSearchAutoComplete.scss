@@ -119,6 +119,7 @@
         cursor: pointer;
         padding: 0 16px;
         color: black;
+
         &.selected {
             background-color: lightgray;
         }
@@ -136,7 +137,13 @@ $tagDarkerBackgroundColor: #5cbfcd;
     padding-left: 5px;
     padding-right: 5px;
     cursor: pointer;
+
     &:hover {
         background-color: $tagDarkerBackgroundColor;
     }
+
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
 }
