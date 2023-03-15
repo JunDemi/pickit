@@ -1,7 +1,8 @@
 import React from "react";
+import Register from "routes/Register";
 
 function App() {
-  return <div></div>;
+  return <Register />;
 }
 
 export default App;

@@ -1,124 +1,143 @@
 .register-container {
-    width: 100vw;
-    height: 860px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .register-banner-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 50%;
-    background-color: white;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  background-color: white;
 }
 
 .register-form-wrapper {
-    width: 50%;
-    height: 100%;
-    background-color: white;
+  padding-top: 30px;
+  width: 50%;
+  height: 100%;
+  background-color: white;
 }
 
 .register-title {
-    margin: 15px;
-    font-weight: bold;
-    font-size: 1.3rem;
+  margin: 15px 0px 15px 30px;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
 .register-title-hr {
-    height: 10px;
-    border: 0;
-    box-shadow: 0 10px 10px -10px #bbb inset;
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #bbb inset;
 }
 
 .register-input-wrapper {
-    display: flex;
-    // justify-content: center;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0px 10px 30px;
+  display: flex;
+  height: 75px;
+  // justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px 10px 30px;
+}
+
+.register-input-autocomplete {
+  width: 50px;
+  height: 25px;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: black;
 }
 
 .register-input-wrapper-left {
-    display: flex;
-    // justify-content: center;
-    align-items: center;
-    margin: 10px 0px 10px 30px;
+  width: 70%;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  margin: 10px 0px 10px 10px;
 }
 
 .register-input-wrapper-right {
-    display: flex;
-    // justify-content: center;
-    align-items: center;
-    margin: 10px 0px 10px 30px;
+  width: 30%;
+  display: flex;
+  flex-direction: row-reverse;
+  // justify-content: center;
+  align-items: center;
+  margin: 10px 0px 10px 30px;
 }
 
 .register-footer {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
+  margin: 60px 0px 50px 0px;
+  display: flex;
+  justify-content: center;
 }
 
 .register-footer-buttons-wrapper {
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 @mixin deleteDefaultButtonStyle {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0;
-    padding: 0.5rem 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 1rem;
 
-    font-family: "Noto Sans KR", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    text-align: center;
-    text-decoration: none;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
 
-    display: inline-block;
-    width: auto;
+  display: inline-block;
+  width: auto;
 
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .register-nickvalidate-button {
-    @include deleteDefaultButtonStyle;
-    background-color: black;
-    color: white;
-    border: 0;
+  @include deleteDefaultButtonStyle;
+  background-color: black;
+  color: white;
+  border: 0;
 
-    &:hover {
-        background-color: rgb(85, 80, 80);
-    }
+  &:hover {
+    background-color: rgb(85, 80, 80);
+  }
 }
 
 .register-sign-up-button {
-    @include deleteDefaultButtonStyle;
-    background-color: black;
-    color: white;
-    border: 0;
+  @include deleteDefaultButtonStyle;
+  background-color: black;
+  color: white;
+  border: 0;
 
-    &:hover {
-        background-color: rgb(85, 80, 80);
-    }
+  &:hover {
+    background-color: rgb(85, 80, 80);
+  }
 }
 
 .register-sign-in-button {
-    @include deleteDefaultButtonStyle;
-    background-color: black;
-    color: white;
-    border: 0;
+  @include deleteDefaultButtonStyle;
+  background-color: black;
+  color: white;
+  border: 0;
 
-    &:hover {
-        background-color: rgb(85, 80, 80);
-    }
+  &:hover {
+    background-color: rgb(85, 80, 80);
+  }
 }
