@@ -1,9 +1,9 @@
-import React from "react";
-import { useQuery } from "react-query";
-import Popup from "components/common/Popup";
-import { usePopup } from "hooks";
-import { commonService } from "service";
-import moment from "moment";
+import React from 'react';
+import { useQuery } from 'react-query';
+import Popup from 'components/common/Popup';
+import { usePopup } from 'hooks';
+import { commonService } from 'service';
+import moment from 'moment';
 
 interface NotifyHistoryData {
   message: String;
@@ -15,16 +15,16 @@ const Notify = () => {
   const notifyPopup = usePopup();
   // TODO: 데이터 수정필요
   // select: data에 실질적으로 담기기 직전에 호출되는 함수, data에 들어갈 값을 리턴값으로 지정
-  const { data } = useQuery("notifyList", commonService.getNotify, {
+  const { data } = useQuery('notifyList', commonService.getNotify, {
     suspense: true,
     select: (r) => {
       // TODO: api response에 맞게 타입 수정필요
       return r.map((item: any) => {
         return {
           ...item,
-          message: "[태연]회원님의 댓글에 답글이 달렸습니다.",
+          message: '[태연]회원님의 댓글에 답글이 달렸습니다.',
           datetime: moment(),
-          userImage: "",
+          userImage: '',
         };
       });
     },
@@ -42,7 +42,7 @@ const Notify = () => {
     if (diffSec < 59) return `${Math.floor(timeDiff.asSeconds())}초전`;
     else if (diffSec < 3600) return `${Math.floor(timeDiff.asMinutes())}분 전`;
     else if (diffSec < 86400) return `${Math.floor(timeDiff.asHours())}시간 전`;
-    else return `${datetime.format("YYYY-MM-DD")}`;
+    else return `${datetime.format('YYYY-MM-DD')}`;
   };
 
   return (
@@ -64,13 +64,13 @@ const Notify = () => {
                     <li key={index} tabIndex={1}>
                       {/* TODO: 이미지 src 수정필요 */}
                       <img
-                        src={require("assets/images/DummyProfile.png")}
+                        src={require('assets/images/DummyProfile.png')}
                         alt="알림 프로필 이미지"
                       />
                       <div>{item.message}</div>
                       <span>{formatHistoryTime(item.datetime)}</span>
                     </li>
-                  )
+                  ),
                 )}
               </ul>
             ) : (

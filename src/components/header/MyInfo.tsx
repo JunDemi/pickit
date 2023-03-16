@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 import { useQuery } from 'react-query';
-import Popup from "components/common/Popup";
-import { usePopup } from "hooks";
+import Popup from 'components/common/Popup';
+import { usePopup } from 'hooks';
 import { commonService } from 'service';
 
 interface MyInfoData {
-  userName: String,
-  follow: Number,
-  like: Number,
-  article: Number
+  userName: String;
+  follow: Number;
+  like: Number;
+  article: Number;
 }
 
 const MyInfo = () => {
@@ -16,14 +16,14 @@ const MyInfo = () => {
   // TODO: 데이터 수정필요
   const { data } = useQuery('myInfo', commonService.getMyInfo, {
     suspense: true,
-    select: (r):MyInfoData => {
+    select: (): MyInfoData => {
       return {
         userName: 'LIM MIN HYEOK',
         follow: 12,
         like: 1000,
-        article: 100
-      }
-    }
+        article: 100,
+      };
+    },
   });
 
   const onMyInfoPopup = (): void => {
@@ -31,12 +31,12 @@ const MyInfo = () => {
   };
 
   const onProfile = (): void => {
-    console.log("PROFILE!!!");
+    console.log('PROFILE!!!');
     myInfoPopup.toggle();
   };
 
   const onLogout = (): void => {
-    console.log("LOGOUT!!!");
+    console.log('LOGOUT!!!');
     myInfoPopup.toggle();
   };
 
@@ -44,14 +44,14 @@ const MyInfo = () => {
     <>
       <button type="button" className="btn-profile" onClick={onMyInfoPopup}>
         {/* TODO: 이미지 src 수정필요 */}
-        <img src={require("../../assets/images/DummyProfile.png")} alt="das" />
+        <img src={require('../../assets/images/DummyProfile.png')} alt="das" />
       </button>
       <Popup popupHooks={myInfoPopup} className="inHeader profile">
         <div className="myInfo">
           <div className="info-top">
             {/* TODO: 이미지 src 수정필요 */}
             <img
-              src={require("../../assets/images/DummyProfile.png")}
+              src={require('../../assets/images/DummyProfile.png')}
               alt="das"
             />
             <div className="info-content">
