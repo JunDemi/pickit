@@ -1,11 +1,12 @@
-import React from "react";
-import FocusTrap from "focus-trap-react";
+import React from 'react';
+import FocusTrap from 'focus-trap-react';
 
-import "assets/styles/Popup.scss";
+import 'assets/styles/Popup.scss';
 
 interface popupTypes {
   popupHooks: {
     isShowing: boolean;
+    // eslint-disable-next-line no-unused-vars
     toggle: (flag?: boolean) => void;
   };
   className?: string;
@@ -31,7 +32,7 @@ const Popup = (props: popupTypes) => {
     >
       <div
         className={`popup-wrapper ${className} ${
-          popupHooks.isShowing ? "show" : ""
+          popupHooks.isShowing ? 'show' : ''
         }`}
       >
         {props.children}
