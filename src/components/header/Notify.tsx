@@ -13,11 +13,12 @@ interface NotifyHistoryData {
 
 const Notify = () => {
   const notifyPopup = usePopup();
-
+  // TODO: 데이터 수정필요
   // select: data에 실질적으로 담기기 직전에 호출되는 함수, data에 들어갈 값을 리턴값으로 지정
-  const serverNotifyList = useQuery("notifyList", commonService.getNotify, {
+  const { data } = useQuery("notifyList", commonService.getNotify, {
     suspense: true,
     select: (r) => {
+      // TODO: api response에 맞게 타입 수정필요
       return r.map((item: any) => {
         return {
           ...item,
@@ -33,6 +34,7 @@ const Notify = () => {
     notifyPopup.toggle();
   };
 
+  // 알림이 ~초전 ~분전 ~몇시간전 출력을 위함
   const formatHistoryTime = (datetime: moment.Moment): String | undefined => {
     const timeDiff = moment.duration(moment().diff(datetime));
     const diffSec = timeDiff.asSeconds();
@@ -43,25 +45,24 @@ const Notify = () => {
     else return `${datetime.format("YYYY-MM-DD")}`;
   };
 
-  const { data } = serverNotifyList;
-
   return (
     <>
       <button type="button" className="btn-notify" onClick={onNotifyOpen}>
-        {data.length && <span className="new">{data.length}</span>}
+        {data?.length && <span className="new">{data.length}</span>}
       </button>
       <Popup popupHooks={notifyPopup} className="inHeader profile">
         <div className="notify">
           <div className="popup-header">
             <h1>알림</h1>
-            <span>({data.length || 0})</span>
+            <span>({data?.length || 0})</span>
           </div>
           <div className="popup-content">
-            {data.length !== 0 ? (
+            {data?.length !== 0 ? (
               <ul>
-                {data.map(
+                {data?.map(
                   (item: NotifyHistoryData, index: number): React.ReactNode => (
                     <li key={index} tabIndex={1}>
+                      {/* TODO: 이미지 src 수정필요 */}
                       <img
                         src={require("assets/images/DummyProfile.png")}
                         alt="알림 프로필 이미지"
