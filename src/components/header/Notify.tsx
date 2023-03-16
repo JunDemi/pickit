@@ -14,11 +14,20 @@ interface NotifyHistoryData {
 const Notify = () => {
   const notifyPopup = usePopup();
 
+  // select: data에 실질적으로 담기기 직전에 호출되는 함수, data에 들어갈 값을 리턴값으로 지정
   const serverNotifyList = useQuery("notifyList", commonService.getNotify, {
     suspense: true,
+    select: (r) => {
+      return r.map((item: any) => {
+        return {
+          ...item,
+          message: "[태연]회원님의 댓글에 답글이 달렸습니다.",
+          datetime: moment(),
+          userImage: "",
+        };
+      });
+    },
   });
-
-  const { data } = serverNotifyList;
 
   const onNotifyOpen = (): void => {
     notifyPopup.toggle();
@@ -34,19 +43,21 @@ const Notify = () => {
     else return `${datetime.format("YYYY-MM-DD")}`;
   };
 
+  const { data } = serverNotifyList;
+
   return (
     <>
       <button type="button" className="btn-notify" onClick={onNotifyOpen}>
-        {data?.length && <span className="new">{data?.length}</span>}
+        {data.length && <span className="new">{data.length}</span>}
       </button>
       <Popup popupHooks={notifyPopup} className="inHeader profile">
         <div className="notify">
           <div className="popup-header">
             <h1>알림</h1>
-            <span>({data?.length || 0})</span>
+            <span>({data.length || 0})</span>
           </div>
           <div className="popup-content">
-            {data && data.length ? (
+            {data.length !== 0 ? (
               <ul>
                 {data.map(
                   (item: NotifyHistoryData, index: number): React.ReactNode => (
