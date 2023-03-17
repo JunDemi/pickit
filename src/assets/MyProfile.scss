@@ -203,16 +203,19 @@
       }
 
       .my-profile-gallery-worldcup-box {
-        display: flex;
+        width: 100%;
+        display: grid;
         justify-content: space-between;
-        padding: 42px 0px 62px 0px;
+        grid-template-columns: 160px 160px 160px;
+        padding: 42px 0px 0px 0px;
 
         .my-profile-gallery-worldcup-card {
+          width: 160px;
           display: flex;
           flex-direction: column;
+          padding: 0px 0px 62px 0px;
 
           .my-profile-gallery-worldcup-image-wrapper {
-            width: 160px;
             height: 180px;
             padding: 0px 0px 14px 0px;
             display: flex;
@@ -249,6 +252,48 @@
               line-height: 16px;
               font-weight: 700;
               color: #888888;
+            }
+          }
+        }
+      }
+
+      .my-profile-gallery-comment-box {
+        width: 100%;
+        margin: 30px 0px 47px 0px;
+        border-top: 3px solid #616161;
+        border-bottom: 3px solid #616161;
+
+        .my-profile-gallery-comment-wrap {
+          width: 100%;
+          padding: 8px 0px;
+          border-bottom: 1px solid #0f0d0d;
+
+          &:last-child {
+            border: none;
+          }
+
+          .my-profile-gallery-comment-info {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            .my-profile-gallery-comment-title {
+              font-size: 10px;
+              line-height: 13px;
+              font-weight: 400;
+              padding: 0px 0px 8px 0px;
+            }
+
+            .my-profile-gallery-comment-content {
+              font-size: 10px;
+              line-height: 13px;
+              font-weight: 700;
+            }
+
+            .my-profile-gallery-comment-date {
+              font-size: 10px;
+              line-height: 13px;
+              font-weight: 400;
             }
           }
         }
