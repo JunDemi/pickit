@@ -5,12 +5,16 @@
     display: none;
 }
 
+.ResponsiveMenu-container{
+    display: none;
+}
+
 /*모바일 반응형 헤더 1200px*/
 @media screen and (max-width : 1200px) {
 
     /*메뉴 버튼 클릭 전 ResponsiveHeader 초기 설정 (display none)*/
     .ResponsiveHeader-container{
-        position: absolute;
+        position: relative;
         display: none;
         top : 0;
         left : 0;
@@ -172,5 +176,15 @@
                 }
             }
         }
+    }
+
+    .ResponsiveMenu-container {
+        position: fixed;
+        bottom : 0;
+        left : 0;
+        width : 100%;
+        height : 5vh;
+        display: block;
+        background-color: #fff;
     }
 }

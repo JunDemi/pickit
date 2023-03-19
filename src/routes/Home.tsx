@@ -4,6 +4,7 @@ import Banner from '../components/main/Banner';
 import WorldCupCards from '../components/main/WorldCupCards';
 import ResponsiveHeader from '../components/header/ResponsiveHeader';
 import React, { Dispatch, SetStateAction, useState } from 'react';
+import ResponsiveMenu from 'components/header/ResponsiveMenu';
 
 export interface stateRule {
   showSide: boolean;
@@ -18,6 +19,7 @@ const Main = (): JSX.Element => {
     height: max-content;
     background-color: #f3f3f3;
     padding: 3rem;
+    margin: 2rem 0;
 
     @media screen and (max-width: 1200px) {
       padding: 0;
@@ -31,6 +33,7 @@ const Main = (): JSX.Element => {
         <Banner />
         <WorldCupCards />
       </Container>
+      <ResponsiveMenu />
     </div>
   );
 };
