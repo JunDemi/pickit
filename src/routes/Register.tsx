@@ -1,11 +1,11 @@
-import "../assets/styles/Register.scss";
-import { ReactComponent as Banner } from "../assets/images/banner.svg";
+import '../assets/styles/Register.scss';
+import { ReactComponent as Banner } from '../assets/images/banner.svg';
 
 function Register() {
   return (
     <div className="register-container">
       <div className="register-banner-wrapper">
-        <Banner width={"100%"} height={"100%"} />
+        <Banner width={'100%'} height={'100%'} />
       </div>
       <div className="register-form-wrapper">
         <p className="register-title">가입 정보</p>

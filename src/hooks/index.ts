@@ -1,3 +1,3 @@
-import usePopup from "./usePopup";
+import usePopup from './usePopup';
 
 export { usePopup };
