@@ -1,0 +1,370 @@
+@import "../GlobalStyle.scss";
+
+/*Main 페이지 월드컵 게임 Container*/
+.WorldCupCards-container{
+    position: relative;
+    width : 100%;
+    height: max-content;
+    background-color: #f3f3f3;
+    padding : 2rem;
+
+    /*WorldCup Cards filter & 검색 & 월드컵 생성 Control Header*/
+    .WorldCupCards-header{
+        position: relative;
+        width : 100%;
+        height : 10vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding : 0 1rem;
+
+        /*최신순 & 인기순 filter buttons*/
+        .WorldCup-filter{
+            display: flex;
+            width : 15rem;
+            justify-content: space-between;
+
+            .popular-filter, .best-filter{
+                display: block;
+                width : 6rem;
+                height : 2rem;
+                background-color : #fff;
+                color : #8A8A8A;
+                border: 2px solid #8A8A8A;
+                font-size: 1.1rem;
+                font-weight: bold;
+                font-family: 'Noto Sans KR', sans-serif;
+                cursor: pointer;
+
+                &.active{
+                    background-color: #000000;
+                    color: #fff;
+                    border: none;
+                }
+            }
+        }
+
+        /*WorldCup Create button*/
+        .WorldCup-create{
+            width : 15rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            .create-button{
+                display: block;
+                width : 8rem;
+                height : 3rem;
+                border: none;
+                background-color: #000;
+                color : #fff;
+                font-size: 1.2rem;
+                font-weight: bold;
+                font-family: 'Noto Sans KR', sans-serif;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: #000;
+                    color : #fff;
+                }
+            }
+        }
+    }
+
+    /*WorldCup Cards list Section*/
+    .WorldCupCards-section{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap : 2rem;
+        place-items: center;
+        height : max-content;
+        padding : 2rem 0 0 0;
+
+        /*WorldCup Card item*/
+        .WorldCupCards{
+            position: relative;
+            width : 20rem;
+            height : 30rem;
+            overflow: hidden;
+            border-radius: 2rem;
+            background-color: #fff;
+
+            &:hover{
+                cursor: pointer;
+                box-shadow: 2px 2px 2px 2px rgba($color: #000000, $alpha: 0.2);
+            }
+
+            /*월드컵 카드 이미지 부모 Box*/
+            .WorldCup-Imgbox{
+                position: relative;
+                width : 100%;
+                height : 16rem;
+                display: flex;
+
+                /*월드컵 주제 이미지 2개 불러오는 자식 ImgBox*/
+                .Random-ImgBox{
+                    position: relative;
+                    width : 50%;
+                    height: 100%;
+                    overflow: hidden;
+
+                    img{
+                        position: absolute;
+                        width : 100%;
+                        height : 100%;
+                        object-fit: cover;
+                    }
+
+                    /*이미지 2개 사진 각각 hover하면 scale 부여*/
+                    &:hover.Random-ImgBox img{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+
+            /*월드컵 카드 정보 infoBox*/
+            .WorldCup-infoBox{
+                position: relative;
+                width : 100%;
+                height : 14rem;
+                padding: 0 1rem;
+
+                /*월드컵 제목 hover 시 underline 강조 텍스트 효과*/
+                &:hover .WorldCup-title{
+                    text-decoration: underline;
+                    color : rgb(255, 93, 93); 
+                }
+
+                /*월드컵 태그 txt box*/
+                .WorldCup-tag{
+                    width : 100%;
+                    height : 2rem;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    margin-top: 0.5rem;
+
+                    /*flex 정렬로 각 요소에 margin-left 부여*/
+                    span{
+                        font-size: 0.8rem;
+                        color : #203B98;
+                        font-weight: bold;
+                        margin-left: 0.5rem;
+
+                        &:first-child{
+                            margin-left: 0;
+                        }
+                    }
+                }
+
+                /*월드컵 제목 txt box*/
+                .WorldCup-title{
+                    width : 100%;
+                    height : 2.5rem;
+                    line-height: 2.5rem;
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                }
+
+                /*월드컵 제작자 txt box*/
+                .WorldCup-creator{
+                    width: 100%;
+                    height : 2rem;
+                    line-height: 2rem;
+                    font-size: 0.9rem;
+                    font-weight: bold;
+                }
+
+                /*월드컵 소갯말 txt box*/
+                .WorldCup-text{
+                    font-size: 0.9rem;
+                    width : 80%;
+                    height : 3rem;
+                    word-break: keep-all;
+                    color : #8A8A8A;
+                    display: flex;
+                    align-items: center;
+                    font-weight: bold;
+                }
+
+                /*월드컵 시작, 랭킹보기 버튼 부모 box*/
+                .select-button{
+                    display: flex;
+                    width : 100%;
+                    height : 4rem;
+                    justify-content: space-around;
+                    align-items: center;
+
+                    /*시작 버튼*/
+                    .start-Worldcup{
+                        display: block;
+                        width : 7rem;
+                        height : 2rem;
+                        background-color: #203B98;
+                        color : #fff;
+                        font-size: 0.8rem;
+                        border-radius: 0.2rem;
+                        cursor: pointer;
+                        font-weight: bold;
+                        font-family: 'Noto Sans KR', sans-serif;
+                        transition: all 0.5s ease-in;
+                        border :none;
+                        box-shadow: 0 0 2px 0 rgba($color: #000000, $alpha: 0.5);
+                    }
+
+                    /*랭킹보기 버튼*/
+                    .Worldcup-Rank{
+                        display: block;
+                        width : 7rem;
+                        height : 2rem;
+                        background-color: #FF0505;
+                        color : #fff;
+                        font-weight: bold;
+                        font-family: 'Noto Sans KR', sans-serif;
+                        border-radius: 0.2rem;
+                        cursor: pointer;
+                        font-weight: bold;
+                        transition: all 0.5s ease-in;
+                        border :none;
+                        box-shadow: 0 0 2px 0 rgba($color: #000000, $alpha: 0.5);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 1200px) {
+    
+    /*Main 페이지 월드컵 게임 Container*/
+    .WorldCupCards-container{
+        padding : 0;
+
+        /*WorldCup Cards filter & 검색 & 월드컵 생성 Control Header Padding 축소*/
+        .WorldCupCards-header{
+            padding : 0 1rem;
+
+            /*최신순 & 인기순 filter buttons 반응형 크기 개선*/
+            .WorldCup-filter{
+                width : 13rem;
+
+                .popular-filter, .best-filter{
+                    display: block;
+                    width : 5rem;
+                    height : 2rem;
+                    background-color : #fff;
+                    color : #8A8A8A;
+                    border: 2px solid #8A8A8A;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+
+                    &.active{
+                        background-color: #000000;
+                        color: #fff;
+                        border: none;
+                    }
+                }
+            }
+
+            /*WorldCup Create button 반응형 크기 개선*/
+            .WorldCup-create{
+
+                .create-button{
+                    width : 6rem;
+                    height : 2rem;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+
+        /*WorldCup Cards list Section 반응형*/
+        .WorldCupCards-section{
+            grid-template-columns: repeat(2, 1fr);
+            gap : 0;
+            padding : 2rem 0;
+
+            /*WorldCup Card item 반응형 해상도 비례 고려 100 퍼센트 grid row 2칸 비율로 나눔*/
+            .WorldCupCards{
+                width : 100%;
+                height : 28rem;
+                border-radius: 0;
+    
+                /*월드컵 카드 이미지 box height 50%*/
+                .WorldCup-Imgbox{
+                    width : 100%;
+                    height : 50%;
+
+
+                    /*PC버전 hover 사진 확대 효과 delete*/
+                    &:hover.Random-ImgBox img{
+                        transform: scale(0);
+                    }
+                }
+    
+                /*월드컵 카드 정보 box height 50%*/
+                .WorldCup-infoBox{
+                    height : 50%;
+    
+                    &:hover .WorldCup-title{
+                        text-decoration: none;
+                        color : #000;
+                    }
+    
+                    .WorldCup-tag{
+    
+                        span{
+                            font-size: 0.5rem;
+                            margin-left: 0.2rem;
+                        }
+                    }
+    
+                    .WorldCup-title{
+                        width : 100%;
+                        height : max-content;
+                        margin : 0.2rem 0;
+                        line-height: 1.5rem;
+                        font-size: 1rem;
+                        font-weight: bold;
+                        word-break: keep-all;
+                    }
+    
+                    .WorldCup-creator{
+                        width: 100%;
+                        height : 1rem;
+                        line-height: 1rem;
+                        font-size: 0.9rem;
+                        font-weight: bold;
+                        margin : 0.5rem 0;
+                    }
+    
+                    .WorldCup-text{
+                        width : 100%;
+                        height : 3rem;
+                        font-size: 0.8rem;
+                    }
+    
+                    .select-button{
+                        width : 100%;
+                        height : 3rem;
+    
+                        .start-Worldcup{
+                            width : 5rem;
+                            height : 2rem;
+                            font-size: 0.8rem;
+                            font-weight: bold;
+                            font-family: 'Noto Sans KR', sans-serif;
+                        }
+    
+                        .Worldcup-Rank{
+                            width : 5rem;
+                            height : 2rem;
+                            font-size: 0.8rem;
+                            font-weight: bold;
+                            font-family: 'Noto Sans KR', sans-serif;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

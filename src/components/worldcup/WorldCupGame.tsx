@@ -1,6 +1,6 @@
 import '../../assets/styles/WorldcupGame.scss';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 interface IMatching {
   id: string;
@@ -66,7 +66,7 @@ const commentList: ICommentList[] = [
     hate: 0,
   },
 ];
-function WorldCupGame() {
+function WorldCupGame(): JSX.Element {
   //버튼 클릭 이벤트
   const [match, set_match] = useState<string | null>(null);
   const [comment, set_comment] = useState<boolean>(false);
