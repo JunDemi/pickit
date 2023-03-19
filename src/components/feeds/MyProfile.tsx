@@ -87,6 +87,50 @@ const ProfileGalleryBox: Function = ({
             </div>
           </div>
         ));
+      case 'rank':
+        return (
+          <div className="my-profile-gallery-rank-wrap">
+            <div className="my-profile-gallery-rank-inner-wrap">
+              <div className="my-profile-gallery-rank-image-wrap">
+                <img
+                  className="my-profile-gallery-rank-image-left"
+                  src={require('../../assets/images/yuna2.jpg')}
+                  alt=""
+                />
+                <img
+                  className="my-profile-gallery-rank-image-right"
+                  src={require('../../assets/images/yujeong.jpg')}
+                  alt=""
+                />
+              </div>
+              <div className="my-profile-gallery-rank-content-wrap">
+                <div className="my-profile-gallery-rank-content-innerwrap">
+                  <h2 className="my-profile-gallery-rank-title">
+                    솔로 여가수 외모 순위
+                  </h2>
+                  <span className="my-profile-gallery-rank-total">{`[92명 참여]`}</span>
+                </div>
+                <div className="my-profile-gallery-rank-content-innerwrap">
+                  <span className="my-profile-gallery-rank-description">
+                    대한민국 솔로 여가수 중 가장 좋아하는 이상형을 선택해주세요.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="my-profile-gallery-rank-inner-wrap">
+              <div className="my-profile-gallery-rank-status-wrap">
+                <span className="my-profile-gallery-rank-status">1.남유정</span>
+                <span className="my-profile-gallery-rank-status">2.이유나</span>
+                <span className="my-profile-gallery-rank-status">3.아이유</span>
+              </div>
+            </div>
+            <div className="my-profile-gallery-rank-inner-wrap">
+              <div className="my-profile-gallery-rank-date-wrap">
+                <span className="my-profile-gallery-rank-date">2023.03.07</span>
+              </div>
+            </div>
+          </div>
+        );
       case 'comment':
         return data.map((comment: CommentIF, index: number) => (
           <div key={index} className="my-profile-gallery-comment-wrap">
@@ -297,11 +341,7 @@ const MyProfile: Function = (): JSX.Element => {
             data={worldcup}
             action={onMore}
           />
-          <ProfileGalleryBox
-            title="참여 월드컵 기록"
-            type="rank"
-            height={481}
-          />
+          <ProfileGalleryBox title="참여 월드컵 기록" type="rank" />
           <ProfileGalleryBox title="댓글 기록" type="comment" data={comment} />
         </div>
         <div className="my-profile-alert-wrapper">
