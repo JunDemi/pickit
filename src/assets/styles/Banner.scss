@@ -1,66 +1,66 @@
-@import "../GlobalStyle.scss";
+@import '../GlobalStyle.scss';
 
-.Banner-container{
+.Banner-container {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: #f3f3f3;
+
+  .popular-chartBox {
     position: relative;
-    width : 100%;
-    height : 50vh;
+    width: 25rem;
+    height: 100%;
+    // background-color: #000;
+    border: 1px solid black;
+  }
+  .Banner-slider {
+    position: relative;
+    width: 70rem;
+    height: 100%;
+    overflow: hidden;
+    border: 4px solid #000;
+
+    video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .Banner-container {
+    position: relative;
+    width: 100%;
+    height: 50vh;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding : 0 2rem;
-    background-color: #f3f3f3;
+    padding: 0;
 
-    .popular-chartBox{
-        position: relative;
-        width : 25rem;
-        height : 100%;
-        background-color: #000;
+    .popular-chartBox {
+      width: 100%;
+      height: 10%;
     }
-    .Banner-slider{
-        position: relative;
-        width : 70rem;
-        height : 100%;
-        overflow: hidden;
-        border: 4px solid #000;
+    .Banner-slider {
+      position: relative;
+      width: 100%;
+      height: 90%;
+      overflow: hidden;
+      border: none;
 
-        video{
-            position: absolute;
-            width : 100%;
-            height : 100%;
-            object-fit: cover;
-        }
+      video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
-}
-
-@media screen and (max-width : 1200px){
-    
-    .Banner-container{
-        position: relative;
-        width : 100%;
-        height : 50vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        padding : 0;
-
-        .popular-chartBox{
-            width : 100%;
-            height : 10%;
-        }
-        .Banner-slider{
-            position: relative;
-            width : 100%;
-            height : 90%;
-            overflow: hidden;
-            border: none;
-
-            video{
-                position: absolute;
-                width : 100%;
-                height : 100%;
-                object-fit: cover;
-            }
-    }
-}
+  }
 }

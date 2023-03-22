@@ -1,5 +1,6 @@
-import '../assets/styles/Register.scss';
+import React from 'react';
 import { ReactComponent as Banner } from '../assets/images/banner.svg';
+import '../assets/styles/Register.scss';
 
 function Register() {
   return (

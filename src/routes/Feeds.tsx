@@ -1,5 +1,5 @@
 function Feeds() {
-    return null;
-  }
-  
-  export default Feeds;
+  return null;
+}
+
+export default Feeds;

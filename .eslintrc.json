@@ -11,7 +11,8 @@
   ],
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "react/display-name": 0
   },
   "settings": {
     "react": {

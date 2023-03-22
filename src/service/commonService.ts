@@ -17,6 +17,14 @@ const commonService = {
       return r.data;
     });
   },
+
+  getRankList: () => {
+    return service({
+      url: 'https://jsonplaceholder.typicode.com/todos',
+    }).then((r) => {
+      return r.data;
+    });
+  },
 };
 
 export default commonService;
