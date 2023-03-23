@@ -1,4 +1,4 @@
-@import "../../GlobalStyle.scss";
+@import '../../GlobalStyle.scss';
 
 .Header-container {
   position: sticky;
@@ -60,36 +60,36 @@
 
   .Popup-container {
     position: relative;
-    width: 10rem;
+    width: 12rem;
     height: 10vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .UserProfile-Popup {
-      position: relative;
-      width: 3rem;
-      height: 3rem;
-      overflow: hidden;
-      border-radius: 50%;
-      cursor: pointer;
+    // .UserProfile-Popup {
+    //   position: relative;
+    //   width: 3rem;
+    //   height: 3rem;
+    //   overflow: hidden;
+    //   border-radius: 50%;
+    //   cursor: pointer;
 
-      img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+    //   img {
+    //     position: absolute;
+    //     width: 100%;
+    //     height: 100%;
+    //     object-fit: cover;
+    //   }
 
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
+    //   &:hover {
+    //     transform: scale(1.1);
+    //   }
+    // }
 
-    .notice-Popup {
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+    // .notice-Popup {
+    //   font-size: 1.5rem;
+    //   cursor: pointer;
+    // }
   }
 
   .Hamburger-button {
@@ -104,14 +104,14 @@
   }
 }
 
-/*태준 팝업 헤더 버튼 scss 코드
 .popup-wrapper {
-  top: 8%;
+  top: 11%;
 }
 
 .btn-profile {
   width: 75px;
   height: 75px;
+  padding: 0;
   border-radius: 50%;
   border: none;
   overflow: hidden;
@@ -129,7 +129,7 @@
   height: 75px;
   border: none;
   border-radius: 50%;
-  background: url("../images/icon_notify.svg") no-repeat center;
+  background: url('../../images/icon_notify.svg') no-repeat center;
   cursor: pointer;
 
   .new {
@@ -145,10 +145,9 @@
     border-radius: 50%;
   }
 }
-*/
 
 /*반응형 모바일 navbar 햄버거 버튼 toggle & navMenu display none & 로고 크기 조정*/
-@media screen and (max-width : 1200px) {
+@media screen and (max-width: 1200px) {
   .Header-container {
     padding: 0 3rem;
 
@@ -169,4 +168,3 @@
     }
   }
 }
-

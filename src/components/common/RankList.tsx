@@ -63,7 +63,7 @@ const RankList = (props: RankListProps) => {
             return (
               <div key={`rank-${index}`} className="rank-item">
                 <span className="rank-no">{item?.no.toString()}</span>
-                <span className="rank-title">{item?.title}</span>
+                <span className="rank-label">{item?.title}</span>
               </div>
             );
           },
@@ -106,7 +106,7 @@ const RealtimeRank = () => {
     refetchOnWindowFocus: false,
   });
 
-  return <RankList title="인기 월드컵 순위" list={data} />;
+  return <RankList title="실시간 검색 키워드" list={data} />;
 };
 
 export { PopularRank, RealtimeRank };

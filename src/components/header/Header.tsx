@@ -1,9 +1,9 @@
-import '../../assets/styles/Header/Header.scss';
-import { BsFillBellFill } from 'react-icons/bs';
-import Yuna from '../../assets/images/yuna.jpg';
 import React from 'react';
-import { stateRule } from '../../routes/Home';
+import { stateRule } from 'routes/Home';
 import { FiMenu } from 'react-icons/fi';
+import Notify from './Notify';
+import MyInfo from './MyInfo';
+import 'assets/styles/Header/Header.scss';
 
 function Header({ setShowSide }: stateRule): JSX.Element {
   return (
@@ -25,11 +25,11 @@ function Header({ setShowSide }: stateRule): JSX.Element {
       </ul>
 
       <div className="Popup-container">
-        <BsFillBellFill className="notice-Popup" />
+        {/* 알림팝업 */}
+        <Notify />
 
-        <div className="UserProfile-Popup">
-          <img src={Yuna} alt="" />
-        </div>
+        {/* 프로필팝업 */}
+        <MyInfo />
       </div>
 
       <div

@@ -1,9 +1,8 @@
 .popup-wrapper {
   display: none;
-  position: absolute;
-  left: 50px;
-  background-color: #000;
-  opacity: 0.9;
+  position: fixed;
+  right: 2vh;
+  background-color: rgba(0, 0, 0, 0.9);
   border-radius: 20px;
 
   &.show {
@@ -79,11 +78,11 @@
       }
       .icon_logout {
         display: inline-block;
-        background: url("../images/icon_logout.svg") no-repeat;
+        background: url('../images/icon_logout.svg') no-repeat;
       }
       .icon_setting {
         display: inline-block;
-        background: url("../images/icon_setting.svg") no-repeat;
+        background: url('../images/icon_setting.svg') no-repeat;
       }
 
       span {
@@ -94,6 +93,9 @@
   }
 
   .notify {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     color: white;
     font-weight: 700;
 
@@ -113,7 +115,6 @@
     }
 
     .popup-content {
-      height: 20rem;
       overflow-y: auto;
 
       li {
@@ -125,7 +126,7 @@
         justify-content: space-between;
         padding: 1rem 1rem 1rem 1.5rem;
         cursor: pointer;
-        
+
         img {
           border-radius: 50%;
           width: 75px;
