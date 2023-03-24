@@ -1,5 +1,5 @@
 function Login() {
-    return null;
-  }
-  
-  export default Login;
+  return null;
+}
+
+export default Login;

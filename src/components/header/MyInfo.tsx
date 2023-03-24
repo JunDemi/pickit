@@ -47,42 +47,48 @@ const MyInfo = () => {
         <img src={require('../../assets/images/DummyProfile.png')} alt="das" />
       </button>
       <Popup popupHooks={myInfoPopup} className="inHeader profile">
-        <div className="myInfo">
-          <div className="info-top">
-            {/* TODO: 이미지 src 수정필요 */}
-            <img
-              src={require('../../assets/images/DummyProfile.png')}
-              alt="das"
-            />
-            <div className="info-content">
-              <h1>{data?.userName}</h1>
-              <div className="info-items">
-                <div className="info-item">
-                  <span className="info-value">{data?.follow.toString()}</span>
-                  <span className="info-label">Follow</span>
-                </div>
-                <div className="info-item">
-                  <span className="info-value">{data?.like.toString()}</span>
-                  <span className="info-label">Like</span>
-                </div>
-                <div className="info-item">
-                  <span className="info-value">{data?.article.toString()}</span>
-                  <span className="info-label">Article</span>
+        {myInfoPopup.isShowing && (
+          <div className="myInfo">
+            <div className="info-top">
+              {/* TODO: 이미지 src 수정필요 */}
+              <img
+                src={require('../../assets/images/DummyProfile.png')}
+                alt="das"
+              />
+              <div className="info-content">
+                <h1>{data?.userName}</h1>
+                <div className="info-items">
+                  <div className="info-item">
+                    <span className="info-value">
+                      {data?.follow.toString()}
+                    </span>
+                    <span className="info-label">Follow</span>
+                  </div>
+                  <div className="info-item">
+                    <span className="info-value">{data?.like.toString()}</span>
+                    <span className="info-label">Like</span>
+                  </div>
+                  <div className="info-item">
+                    <span className="info-value">
+                      {data?.article.toString()}
+                    </span>
+                    <span className="info-label">Article</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="info-bottom">
-            <div tabIndex={1} onClick={onProfile}>
-              <span className="icon icon_setting" />
-              <span>내 프로필 관리</span>
+            <div className="info-bottom">
+              <div tabIndex={1} onClick={onProfile}>
+                <span className="icon icon_setting" />
+                <span>내 프로필 관리</span>
+              </div>
+              <div tabIndex={1} onClick={onLogout}>
+                <span className="icon icon_logout" />
+                <span>로그아웃</span>
+              </div>
             </div>
-            <div tabIndex={1} onClick={onLogout}>
-              <span className="icon icon_logout" />
-              <span>로그아웃</span>
-            </div>
           </div>
-        </div>
+        )}
       </Popup>
     </>
   );
