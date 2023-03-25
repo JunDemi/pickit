@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { commonService } from 'service';
+import { useInterval } from 'hooks';
 import 'assets/styles/RankList.scss';
 
 interface RankListData {
@@ -13,23 +14,36 @@ interface RankListProps {
   list: RankListData[] | undefined;
 }
 
+const getRankList = (
+  list: RankListData[] | undefined,
+  index: number,
+  count: number,
+) => {
+  let i = index * count;
+  const result = [];
+
+  for (; i < (index + 1) * count; i++) {
+    result.push(list?.[i]);
+  }
+
+  return result;
+};
+
 const RankList = (props: RankListProps) => {
+  return (
+    <>
+      <PcRankList {...props} />
+      <MobileRankList {...props} />
+    </>
+  );
+};
+
+const PcRankList = (props: RankListProps) => {
   const { title, list } = props;
-  const [listIndex, setListIndex] = useState<Number>(0);
-
-  const getRankList = () => {
-    let i = +listIndex * 10;
-    const result = [];
-
-    for (; i < (+listIndex + 1) * 10; i++) {
-      result.push(list?.[i]);
-    }
-
-    return result;
-  };
+  const [listIndex, setListIndex] = useState<number>(0);
 
   const onMore = () => {
-    const indexMore = +listIndex + 1;
+    const indexMore = listIndex + 1;
 
     if (indexMore > 4) {
       setListIndex(0);
@@ -55,7 +69,80 @@ const RankList = (props: RankListProps) => {
         </button>
       </div>
       <div className="rank-content">
-        {getRankList()?.map(
+        {getRankList(list, listIndex, 10)?.map(
+          (
+            item: RankListData | undefined,
+            index: Number,
+          ): React.ReactElement => {
+            return (
+              <div key={`rank-${index}`} className="rank-item">
+                <span className="rank-no">{item?.no.toString()}</span>
+                <span className="rank-label">{item?.title}</span>
+              </div>
+            );
+          },
+        )}
+      </div>
+    </div>
+  );
+};
+
+const MobileRankList = (props: RankListProps) => {
+  const { title, list } = props;
+  const [isExpand, setIsExpand] = useState<boolean>(false);
+  const [listIndex, setListIndex] = useState<number>(0);
+  const [prevviewIndex, setPreviewIndex] = useState<number>(0);
+
+  useInterval(() => {
+    const nextIndex = prevviewIndex + 1;
+    setPreviewIndex(nextIndex > 49 ? 0 : nextIndex);
+  }, 5000);
+
+  const onPrev = () => {
+    const prevIndex = listIndex - 1;
+    setListIndex(prevIndex < 0 ? 0 : prevIndex);
+  };
+
+  const onNext = () => {
+    const nextIndex = listIndex + 1;
+    setListIndex(nextIndex > 9 ? 9 : nextIndex);
+  };
+
+  const rankList = useMemo(() => {
+    return getRankList(list, listIndex, 5);
+  }, [listIndex]);
+
+  return (
+    <div className="mobile-rank-wrapper">
+      <div className="rank-preview">
+        <span className="rank-title">{title}</span>
+        <div className="rank-item">
+          <span className="rank-no">
+            {list?.[prevviewIndex]?.no.toString()}
+          </span>
+          <span className="rank-label">{list?.[prevviewIndex]?.title}</span>
+          <button
+            type="button"
+            className={`rank-expand ${isExpand ? 'active' : ''}`}
+            onClick={() => setIsExpand(!isExpand)}
+          />
+        </div>
+      </div>
+      <div className={`rank-content ${isExpand ? '' : 'hide'}`}>
+        <div className="rank-toolbar">
+          <div className="rank-paging">
+            <button type="button" className="prev-btn" onClick={onPrev} />
+            <button type="button" className="next-btn" onClick={onNext} />
+          </div>
+          <button
+            type="button"
+            className="close-btn"
+            onClick={() => setIsExpand(false)}
+          >
+            닫기
+          </button>
+        </div>
+        {rankList.map(
           (
             item: RankListData | undefined,
             index: Number,
