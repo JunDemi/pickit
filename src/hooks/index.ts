@@ -1,3 +1,4 @@
 import usePopup from './usePopup';
+import useInterval from './useInterval';
 
-export { usePopup };
+export { usePopup, useInterval };
