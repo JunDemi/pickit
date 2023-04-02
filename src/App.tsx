@@ -1,3 +1,4 @@
+import WorldCupGame from 'components/worldcup/WorldCupGame';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -23,6 +24,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
+          <Route path="/game" element={<WorldCupGame />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>

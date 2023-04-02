@@ -42,8 +42,8 @@ const commentList: ICommentList[] = [
     pick: 'IU',
     comment: '아이유는 따라잡을 수 없다',
     date: '2020-11-14',
-    like: 0,
-    hate: 0,
+    like: 4,
+    hate: 2,
   },
   {
     comment_id: '2',
@@ -52,8 +52,8 @@ const commentList: ICommentList[] = [
     pick: 'Taeyeon',
     comment: '인간 나비스 김태연 ~',
     date: '2020-11-14',
-    like: 0,
-    hate: 0,
+    like: 2,
+    hate: 1,
   },
   {
     comment_id: '3',
@@ -62,7 +62,7 @@ const commentList: ICommentList[] = [
     pick: 'IU',
     comment: '아이유ㅠㅠㅠㅠㅠㅠㅠ',
     date: '2020-11-14',
-    like: 0,
+    like: 5,
     hate: 0,
   },
 ];
@@ -94,13 +94,12 @@ function WorldCupGame(): JSX.Element {
           <p className="game-jump">92명 참여완료</p>
           <div className="game-match">
             {matching.map((item) => (
-              <div className="item">
+              <div className="item" key={item.id}>
                 <div className="img-container">
                   <motion.img
                     src={item.photo}
                     whileHover={{ y: -15 }}
                     layoutId={item.id}
-                    key={item.id}
                   />
                 </div>
                 <h2>{item.name}</h2>
@@ -161,11 +160,29 @@ function WorldCupGame(): JSX.Element {
           </form>
           {commentList.map((item) => (
             <div key={item.comment_id} className="comments">
-              <h1>{item.name}</h1>
-              <h1>{item.date}</h1>
-              <h1>{item.comment}</h1>
-              <button>좋아요 {item.like}</button>
-              <button>싫어요 {item.hate}</button>
+              <div className="comments-profiles">
+                <div>
+                  <div className="lineup">
+                    <img src="https://img.freepik.com/free-photo/aesthetic-dark-wallpaper-background-neon-light_53876-128291.jpg" />
+                    <div>
+                      <h1>{item.name}</h1>
+                      <h1>{item.date}</h1>
+                    </div>
+                    <img
+                      src={
+                        item.pick === matching[0].id
+                          ? matching[0].photo
+                          : matching[1].photo
+                      }
+                    />
+                  </div>
+                  <h1 className="comment-text">{item.comment}</h1>
+                </div>
+                <div className="like-hate">
+                  <button>좋아요 {item.like}</button>
+                  <button>싫어요 {item.hate}</button>
+                </div>
+              </div>
               <hr />
             </div>
           ))}
