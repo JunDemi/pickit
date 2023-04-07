@@ -1,6 +1,201 @@
+@mixin deleteDefaultButtonStyle {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 1rem;
+
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+
+  display: inline-block;
+  width: auto;
+
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.register-input-wrapper {
+  display: flex;
+  height: 75px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px 10px 30px;
+
+  //닉네임
+  .nickname-section-wrapper {
+    flex: 1;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+
+    .nickname-input-label {
+      font-weight: bold;
+      font-size: 1rem;
+      flex: 1;
+      text-align: end;
+    }
+
+    .nickname-left-section {
+      flex: 4;
+      display: flex;
+
+      .nickname-input-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex: 3;
+
+        .nickname-input {
+          margin: 0px 30px 0px 30px;
+          padding: 10px;
+          border: 1px solid black;
+          display: flex;
+          flex-direction: column;
+          flex: 3;
+        }
+      }
+    }
+
+    .nickname-right-section {
+      flex: 5;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  //이메일
+  .email-section-wrapper {
+    display: flex;
+    flex: 1;
+    height: 75px;
+    justify-content: space-between;
+    align-items: center;
+
+    .email-input-label {
+      font-weight: bold;
+      font-size: 1rem;
+      flex: 1;
+      text-align: end;
+    }
+
+    .email-input-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 4;
+
+      .email-input {
+        margin: 0px 30px 0px 30px;
+        padding: 10px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        flex: 9;
+      }
+    }
+  }
+
+  //아이디
+  .username-section-wrapper {
+    display: flex;
+    flex: 1;
+    height: 75px;
+    justify-content: space-between;
+    align-items: center;
+
+    .username-input-label {
+      font-weight: bold;
+      font-size: 1rem;
+      flex: 1;
+      text-align: end;
+    }
+
+    .username-input-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 4;
+
+      .username-input {
+        margin: 0px 30px 0px 30px;
+        padding: 10px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        flex: 9;
+      }
+    }
+  }
+
+  //아이디
+  .name-section-wrapper {
+    display: flex;
+    flex: 1;
+    height: 75px;
+    justify-content: space-between;
+    align-items: center;
+
+    .name-input-label {
+      font-weight: bold;
+      font-size: 1rem;
+      flex: 1;
+      text-align: end;
+    }
+
+    .name-input-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 4;
+
+      .name-input {
+        margin: 0px 30px 0px 30px;
+        padding: 10px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        flex: 9;
+      }
+    }
+  }
+
+  //비밀번호
+  .password-section-wrapper {
+    display: flex;
+    flex: 1;
+    height: 75px;
+    justify-content: space-between;
+    align-items: center;
+
+    .password-input-label {
+      font-weight: bold;
+      font-size: 1rem;
+      flex: 1;
+      text-align: end;
+    }
+
+    .password-input-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 4;
+
+      .password-input {
+        margin: 0px 30px 0px 30px;
+        padding: 10px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        flex: 9;
+      }
+    }
+  }
+}
+
+// 공통
 .register-container {
   width: 100vw;
-  height: 100vh;
+  height: 1200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +205,6 @@
 }
 
 .register-banner-wrapper {
-  margin-top: 30px;
   display: flex;
   justify-content: center;
   width: 50%;
@@ -36,27 +230,22 @@
   box-shadow: 0 10px 10px -10px #bbb inset;
 }
 
-.register-input-wrapper {
+.register-description {
   display: flex;
-  height: 75px;
-  // justify-content: center;
-  justify-content: space-between;
   align-items: center;
-  margin: 10px 0px 10px 30px;
+  color: #707070;
+  font-size: 0.8rem;
+  margin: 0px 10px 0px 10px;
 }
 
-.register-input-autocomplete-wrapper {
-  margin-left: 30px;
-  padding: 10px;
-  border: 1px solid black;
-  display: flex;
-  flex: 3;
+.alert {
+  margin: 0px 30px 0px 30px;
+  color: rgb(211, 67, 15);
 }
 
-.register-input-autocomplete {
-  width: 50px;
+.register-input {
+  flex: 1;
   height: 25px;
-  flex-grow: 1;
   margin: 0;
   padding: 0;
   background-color: transparent;
@@ -66,29 +255,15 @@
   color: black;
 }
 
-.register-input-wrapper-left {
-  width: 70%;
-  display: flex;
-  // justify-content: center;
-  align-items: center;
-  margin: 10px 0px 10px 10px;
-}
+.register-validate-button {
+  @include deleteDefaultButtonStyle;
+  background-color: black;
+  color: white;
+  border: 0;
 
-.register-input-label {
-  font-weight: bold;
-  font-size: 1.1rem;
-  width: 20%;
-  flex: 1;
-  text-align: end;
-}
-
-.register-input-wrapper-right {
-  width: 30%;
-  display: flex;
-  flex-direction: row-reverse;
-  // justify-content: center;
-  align-items: center;
-  margin: 10px 0px 10px 30px;
+  &:hover {
+    background-color: rgb(85, 80, 80);
+  }
 }
 
 .register-footer {
@@ -104,12 +279,6 @@
   flex-direction: column;
 }
 
-.register-description {
-  color: #707070;
-  font-size: 0.8rem;
-  margin-right: 10px;
-}
-
 .register-login-description {
   font-size: 0.8rem;
   color: #707070;
@@ -117,37 +286,6 @@
   text-align: center;
 }
 
-@mixin deleteDefaultButtonStyle {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  margin: 0;
-  padding: 0.5rem 1rem;
-
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: center;
-  text-decoration: none;
-
-  display: inline-block;
-  width: auto;
-
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.register-nickvalidate-button {
-  @include deleteDefaultButtonStyle;
-  background-color: black;
-  color: white;
-  border: 0;
-
-  &:hover {
-    background-color: rgb(85, 80, 80);
-  }
-}
 
 .register-sign-up-button-wrapper {
   margin-left: 40px;
