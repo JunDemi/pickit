@@ -3,7 +3,7 @@ import commonService from './commonService';
 
 // TODO: axios요청헤더 수정필요
 const api = axios.create({
-  baseURL: '',
+  baseURL: 'http://15.164.171.145:8000',
   timeout: 60000,
   headers: {
     'Access-Control-Allow-Origin': '*',
