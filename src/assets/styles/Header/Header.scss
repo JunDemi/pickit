@@ -146,6 +146,10 @@
   }
 }
 
+.sign-wrapper span {
+  cursor: pointer;
+}
+
 /*반응형 모바일 navbar 햄버거 버튼 toggle & navMenu display none & 로고 크기 조정*/
 @media screen and (max-width: 1200px) {
   .Header-container {
