@@ -2,7 +2,7 @@ import WorldCupGame from 'components/worldcup/WorldCupGame';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Home } from 'routes';
+import { Home, Register } from 'routes';
 /* 프로필, 알림 팝업 기능 Header Component에 추가 예정 
 import { RecoilRoot } from 'recoil';
 import WorldCupGame from 'components/worldcup/WorldCupGame';
@@ -24,8 +24,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path="/game" element={<WorldCupGame />} />
           <Route path="/" element={<Home />} />
+          <Route path="/game" element={<WorldCupGame />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
