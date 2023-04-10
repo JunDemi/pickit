@@ -1,52 +1,8 @@
 import '../../assets/styles/WorldcupGame.scss';
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useRef, useState } from 'react';
-import { matching } from 'GameMatching_test';
+import { matching, commentList } from 'GameMatching_test';
 
-//임시 댓글 데이터
-interface ICommentList {
-  comment_id: string;
-  id: string;
-  name: string;
-  pick: string;
-  comment: string;
-  date: string;
-  like: number;
-  hate: number;
-}
-
-export const commentList: ICommentList[] = [
-  {
-    comment_id: '1',
-    id: 'kimtaemin',
-    name: '김태민',
-    pick: 'IU',
-    comment: '아이유는 따라잡을 수 없다',
-    date: '2020-11-14',
-    like: 4,
-    hate: 2,
-  },
-  {
-    comment_id: '2',
-    id: 'kwontaejoon',
-    name: '권태준',
-    pick: 'Taeyeon',
-    comment: '인간 나비스 김태연 ~',
-    date: '2020-11-14',
-    like: 2,
-    hate: 1,
-  },
-  {
-    comment_id: '3',
-    id: 'sojiwoo',
-    name: '소지우',
-    pick: 'IU',
-    comment: '아이유ㅠㅠㅠㅠㅠㅠㅠ',
-    date: '2020-11-14',
-    like: 5,
-    hate: 0,
-  },
-];
 function WorldCupGame() {
   //버튼 클릭 이벤트
   const [match, set_match] = useState<string | null>(null);
@@ -71,11 +27,12 @@ function WorldCupGame() {
   const shuffle = matching.sort(() => Math.random() - 0.5);
   //cardphoto에 shuffle을 가져온 후 맨 앞 2개만 저장
   const [cardsphoto] = useState([...shuffle].slice(0, 2));
+
   return (
     <>
       <AnimatePresence>
         <div className="game-container">
-          <h1 className="game-title">당신의 최애 솔로 여가수는?</h1>
+          <h1 className="game-title">당신의 최애 여가수는?</h1>
           <p className="game-jump">92명 참여완료</p>
           <div className="game-match">
             {cardsphoto.map((item) => (
@@ -152,39 +109,44 @@ function WorldCupGame() {
               <button>글쓰기</button>
             </div>
           </form>
-          {commentList.map((item) => (
-            <div key={item.comment_id} className="comments">
-              <div className="comments-profiles">
-                <div>
-                  <div className="lineup">
-                    <img src="https://img.freepik.com/free-photo/aesthetic-dark-wallpaper-background-neon-light_53876-128291.jpg" />
+          {commentList.map(
+            (item) =>
+              cardsphoto.findIndex(
+                (comment_photo) => comment_photo.id === item.pick,
+              ) !== -1 && (
+                <div key={item.comment_id} className="comments">
+                  <div className="comments-profiles">
                     <div>
-                      <h1>{item.name}</h1>
-                      <h1>{item.date}</h1>
+                      <div className="lineup">
+                        <img src="https://img.freepik.com/free-photo/aesthetic-dark-wallpaper-background-neon-light_53876-128291.jpg" />
+                        <div>
+                          <h1>{item.name}</h1>
+                          <h1>{item.date}</h1>
+                        </div>
+                        <div
+                          className="comment_pick_photo"
+                          style={{
+                            backgroundImage: `url(${
+                              matching[
+                                matching.findIndex(
+                                  (matchphoto) => matchphoto.id === item.pick,
+                                )
+                              ].photo
+                            })`,
+                          }}
+                        />
+                      </div>
+                      <h1 className="comment-text">{item.comment}</h1>
                     </div>
-                    <div
-                      className="comment_pick_photo"
-                      style={{
-                        backgroundImage: `url(${
-                          matching[
-                            matching.findIndex(
-                              (matchphoto) => matchphoto.id === item.pick,
-                            )
-                          ].photo
-                        })`,
-                      }}
-                    />
+                    <div className="like-hate">
+                      <button>좋아요 {item.like}</button>
+                      <button>싫어요 {item.hate}</button>
+                    </div>
                   </div>
-                  <h1 className="comment-text">{item.comment}</h1>
+                  <hr />
                 </div>
-                <div className="like-hate">
-                  <button>좋아요 {item.like}</button>
-                  <button>싫어요 {item.hate}</button>
-                </div>
-              </div>
-              <hr />
-            </div>
-          ))}
+              ),
+          )}
         </div>
       ) : null}
     </>

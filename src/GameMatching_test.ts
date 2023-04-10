@@ -35,7 +35,7 @@ export const matching: IMatching[] = [
       'https://cdn.newsculture.press/news/photo/202201/503612_607001_4036.jpg',
   },
   {
-    id: 'Jeong Eun-ji',
+    id: 'Jeong Eunji',
     name: '정은지',
     photo:
       'http://www.ybstv.net/data/photos/adexpo/202202/N16450147698386_48c39a.jpg',
@@ -192,5 +192,150 @@ export const matching: IMatching[] = [
     id: 'Yoojung',
     name: '유정',
     photo: 'https://cdn.entermedia.co.kr/news/photo/202106/26714_49167_93.jpg',
+  },
+];
+
+//임시 댓글 데이터
+interface ICommentList {
+  comment_id: string;
+  id: string;
+  name: string;
+  pick: string;
+  comment: string;
+  date: string;
+  like: number;
+  hate: number;
+}
+
+export const commentList: ICommentList[] = [
+  {
+    comment_id: '1',
+    id: 'kimtaemin',
+    name: '김태민',
+    pick: 'IU',
+    comment: '아이유는 따라잡을 수 없다',
+    date: '2020-11-14',
+    like: 4,
+    hate: 2,
+  },
+  {
+    comment_id: '2',
+    id: 'kwontaejoon',
+    name: '권태준',
+    pick: 'Taeyeon',
+    comment: '인간 나비스 김태연 ~',
+    date: '2020-11-14',
+    like: 2,
+    hate: 1,
+  },
+  {
+    comment_id: '3',
+    id: 'sojiwoo',
+    name: '소지우',
+    pick: 'IU',
+    comment: '아이유ㅠㅠㅠㅠㅠㅠㅠ',
+    date: '2020-11-14',
+    like: 5,
+    hate: 0,
+  },
+  {
+    comment_id: '4',
+    id: 'parkjungwook',
+    name: '박정욱',
+    pick: 'Lisa',
+    comment: '리사 체고~~',
+    date: '2020-11-14',
+    like: 3,
+    hate: 2,
+  },
+  {
+    comment_id: '5',
+    id: 'sojiwoo',
+    name: '소지우',
+    pick: 'Chu',
+    comment: '츄츄츄츄츄츄츄',
+    date: '2020-11-14',
+    like: 3,
+    hate: 1,
+  },
+  {
+    comment_id: '6',
+    id: 'kimtaemin',
+    name: '김태민',
+    pick: 'Ailee',
+    comment: '에일리 여신뉨~!',
+    date: '2020-11-14',
+    like: 1,
+    hate: 0,
+  },
+  {
+    comment_id: '7',
+    id: 'limminhyeok',
+    name: '임민혁',
+    pick: 'Jang Won-young',
+    comment: '장원영 화이팅~!!!',
+    date: '2020-11-14',
+    like: 3,
+    hate: 0,
+  },
+  {
+    comment_id: '8',
+    id: 'sojiwoo',
+    name: '소지우',
+    pick: 'Son Na-eun',
+    comment: '손나은 개이뻐 개이뻐',
+    date: '2020-11-14',
+    like: 2,
+    hate: 2,
+  },
+  {
+    comment_id: '9',
+    id: 'limminhyeok',
+    name: '임민혁',
+    pick: 'Suzy',
+    comment: '국민 첫사랑 수지',
+    date: '2020-11-14',
+    like: 5,
+    hate: 4,
+  },
+  {
+    comment_id: '10',
+    id: 'realrlgus',
+    name: '권기현',
+    pick: 'Rosé',
+    comment: 'I love you Rose',
+    date: '2020-11-14',
+    like: 3,
+    hate: 1,
+  },
+  {
+    comment_id: '11',
+    id: 'kimtaemin',
+    name: '김태민',
+    pick: 'Lisa',
+    comment: '라리사 라리사~',
+    date: '2020-11-14',
+    like: 2,
+    hate: 0,
+  },
+  {
+    comment_id: '12',
+    id: 'kwontaejoon',
+    name: '권태준',
+    pick: 'Chungha',
+    comment: '청하하하하하하',
+    date: '2020-11-14',
+    like: 5,
+    hate: 1,
+  },
+  {
+    comment_id: '13',
+    id: 'realrlgus',
+    name: '권기현',
+    pick: 'Jeon Somi',
+    comment: '소미소미 전소미',
+    date: '2020-11-14',
+    like: 5,
+    hate: 3,
   },
 ];
