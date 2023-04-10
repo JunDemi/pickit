@@ -1,5 +1,5 @@
 function CreateWorldCup() {
-    return null;
-  }
-  
-  export default CreateWorldCup;
+  return null;
+}
+
+export default CreateWorldCup;

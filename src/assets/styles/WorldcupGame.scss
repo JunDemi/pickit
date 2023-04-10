@@ -25,16 +25,15 @@
       width: 50%;
       display: grid;
       grid-template-columns: repeat(1, 1fr);
+      /*이미지*/
       .img-container {
-        display: flex;
-        align-items: center;
         height: 20rem;
-        img {
-          width: 15rem;
-          margin: 0 auto;
-          border-radius: 15px;
-          box-shadow: 3px 3px 5px #ababab;
-        }
+        width: 15rem;
+        margin: 0 auto;
+        border-radius: 15px;
+        box-shadow: 3px 3px 5px #ababab;
+        background-size: cover;
+        background-repeat: no-repeat;
       }
       button {
         color: white;
@@ -88,10 +87,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    img {
+    .matched_image {
       border-radius: 15px;
       width: 25rem;
+      height: 33rem;
       box-shadow: 3px 3px 5px #ababab;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
     h1 {
       font-size: 20px;
@@ -137,14 +139,16 @@
     img {
       border-radius: 50%;
       box-shadow: 2px 2px 4px #ababab;
-      &:first-child {
-        width: 4rem;
-        height: 4rem;
-      }
-      &:last-child {
-        width: 3rem;
-        height: 3rem;
-      }
+      width: 4rem;
+      height: 4rem;
+    }
+    .my_pick_photo {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      box-shadow: 2px 2px 4px #ababab;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
     h3 {
       font-weight: bold;
@@ -198,6 +202,14 @@
           border-radius: 50%;
           width: 35px;
           height: 35px;
+        }
+        .comment_pick_photo {
+          box-shadow: 2px 2px 4px #ababab;
+          border-radius: 50%;
+          width: 35px;
+          height: 35px;
+          background-size: cover;
+          background-repeat: no-repeat;
         }
         div {
           h1 {
