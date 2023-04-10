@@ -31,7 +31,7 @@ function Header({ setShowSide }: stateRule): JSX.Element {
         <div className="sign-wrapper">
           <span onClick={() => navigate('/register')}>Sign up</span>
           <span>/</span>
-          <span>Sign in</span>
+          <span onClick={() => navigate('/login')}>Sign in</span>
         </div>
 
         {/* 알림팝업 */}
