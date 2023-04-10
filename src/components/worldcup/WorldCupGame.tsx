@@ -1,27 +1,8 @@
 import '../../assets/styles/WorldcupGame.scss';
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useRef, useState } from 'react';
+import { matching } from 'GameMatching_test';
 
-interface IMatching {
-  id: string;
-  name: string;
-  photo: string;
-}
-//임시 월드컵 데이터
-export const matching: IMatching[] = [
-  {
-    id: 'IU',
-    name: '아이유',
-    photo:
-      'https://file.mk.co.kr/meet/neds/2023/02/image_readtop_2023_117777_16759917015347929.jpg',
-  },
-  {
-    id: 'Taeyeon',
-    name: '태연',
-    photo:
-      'http://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/056/069/675/56069675_1661221670625_28_600x600.JPG',
-  },
-];
 //임시 댓글 데이터
 interface ICommentList {
   comment_id: string;
@@ -34,7 +15,7 @@ interface ICommentList {
   hate: number;
 }
 
-const commentList: ICommentList[] = [
+export const commentList: ICommentList[] = [
   {
     comment_id: '1',
     id: 'kimtaemin',
@@ -66,11 +47,11 @@ const commentList: ICommentList[] = [
     hate: 0,
   },
 ];
-function WorldCupGame(): JSX.Element {
+function WorldCupGame() {
   //버튼 클릭 이벤트
   const [match, set_match] = useState<string | null>(null);
   const [comment, set_comment] = useState<boolean>(false);
-  const scrollComment = useRef<HTMLDivElement>(null);
+  const scrollComment = useRef<any>(null);
   //선택하기 버튼 클릭 시
   const choicebutton = (id: string) => {
     //이미지 매칭
@@ -85,6 +66,8 @@ function WorldCupGame(): JSX.Element {
       block: 'start',
     });
   };
+  const shuffle = matching.sort(() => Math.random() - 0.5);
+  const [cardsphoto] = useState([...shuffle].slice(0, 2));
 
   return (
     <>
@@ -93,15 +76,14 @@ function WorldCupGame(): JSX.Element {
           <h1 className="game-title">당신의 최애 솔로 여가수는?</h1>
           <p className="game-jump">92명 참여완료</p>
           <div className="game-match">
-            {matching.map((item) => (
+            {cardsphoto.map((item) => (
               <div className="item" key={item.id}>
-                <div className="img-container">
-                  <motion.img
-                    src={item.photo}
-                    whileHover={{ y: -15 }}
-                    layoutId={item.id}
-                  />
-                </div>
+                <motion.div
+                  className="img-container"
+                  whileHover={{ y: -15 }}
+                  layoutId={item.id}
+                  style={{ backgroundImage: `url(${item.photo})` }}
+                />
                 <h2>{item.name}</h2>
                 <button onClick={() => choicebutton(item.id)}>선택하기</button>
               </div>
@@ -115,18 +97,23 @@ function WorldCupGame(): JSX.Element {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-            ></motion.div>
+            />
             <div className="selected-item">
-              <motion.img
+              <motion.div
+                className="matched_image"
                 layoutId={match}
-                src={
-                  match === matching[0].id
-                    ? matching[0].photo
-                    : matching[1].photo
-                }
+                style={{
+                  backgroundImage: `url(${
+                    match === cardsphoto[0].id
+                      ? cardsphoto[0].photo
+                      : cardsphoto[1].photo
+                  })`,
+                }}
               />
               <h1>
-                {match === matching[0].id ? matching[0].name : matching[1].name}{' '}
+                {match === cardsphoto[0].id
+                  ? cardsphoto[0].name
+                  : cardsphoto[1].name}{' '}
                 16강 진출
               </h1>
               <motion.div
@@ -146,10 +133,15 @@ function WorldCupGame(): JSX.Element {
           <div className="comment-profile">
             <img src={`https://tago.kr/images/sub/TG300-D02_img01.png`} />
             <h3>임민혁</h3>
-            <img
-              src={
-                match === matching[0].id ? matching[0].photo : matching[1].photo
-              }
+            <div
+              className="my_pick_photo"
+              style={{
+                backgroundImage: `url(${
+                  match === cardsphoto[0].id
+                    ? cardsphoto[0].photo
+                    : cardsphoto[1].photo
+                })`,
+              }}
             />
           </div>
           <form>
@@ -168,12 +160,17 @@ function WorldCupGame(): JSX.Element {
                       <h1>{item.name}</h1>
                       <h1>{item.date}</h1>
                     </div>
-                    <img
-                      src={
-                        item.pick === matching[0].id
-                          ? matching[0].photo
-                          : matching[1].photo
-                      }
+                    <div
+                      className="comment_pick_photo"
+                      style={{
+                        backgroundImage: `url(${
+                          matching[
+                            matching.findIndex(
+                              (matchphoto) => matchphoto.id === item.pick,
+                            )
+                          ].photo
+                        })`,
+                      }}
                     />
                   </div>
                   <h1 className="comment-text">{item.comment}</h1>
@@ -191,5 +188,4 @@ function WorldCupGame(): JSX.Element {
     </>
   );
 }
-
 export default WorldCupGame;

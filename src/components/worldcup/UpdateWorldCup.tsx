@@ -1,5 +1,5 @@
 function UpdateWorldCup() {
-    return null;
-  }
-  
-  export default UpdateWorldCup;
+  return null;
+}
+
+export default UpdateWorldCup;
