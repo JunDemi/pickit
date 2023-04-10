@@ -51,7 +51,8 @@ function WorldCupGame() {
   //버튼 클릭 이벤트
   const [match, set_match] = useState<string | null>(null);
   const [comment, set_comment] = useState<boolean>(false);
-  const scrollComment = useRef<any>(null);
+  //스크롤 관련 훅
+  const scrollComment = useRef<object | null | any>(null);
   //선택하기 버튼 클릭 시
   const choicebutton = (id: string) => {
     //이미지 매칭
@@ -66,9 +67,10 @@ function WorldCupGame() {
       block: 'start',
     });
   };
+  //shuffle = 임시 게임 매칭 API를 랜덤 배치
   const shuffle = matching.sort(() => Math.random() - 0.5);
+  //cardphoto에 shuffle을 가져온 후 맨 앞 2개만 저장
   const [cardsphoto] = useState([...shuffle].slice(0, 2));
-
   return (
     <>
       <AnimatePresence>
