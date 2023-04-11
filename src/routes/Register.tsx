@@ -91,7 +91,7 @@ function Register() {
                   <input
                     {...register('password', { required: true })}
                     className="register-input"
-                    type="text"
+                    type="password"
                     aria-invalid={errors.password ? 'true' : 'false'}
                   />
                 </div>
