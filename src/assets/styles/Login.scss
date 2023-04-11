@@ -1,6 +1,38 @@
+.alert {
+  margin: 0px 30px 0px 30px;
+  color: rgb(211, 67, 15);
+}
+
 .login-container {
-    width: 100vw;
-    height: 100%;
-    top: 0;
-    position: absolute;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  position: absolute;
+
+  .login-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+
+    .email-input {
+      margin: 0px 30px 0px 30px;
+      padding: 10px;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      flex: 9;
+
+      .register-input {
+        flex: 1;
+        height: 25px;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        color: black;
+      }
+    }
+  }
 }
