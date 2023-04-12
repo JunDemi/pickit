@@ -19,6 +19,7 @@ function Register() {
     // watch,
     formState: { errors },
   } = useForm<RegisterInfo>();
+
   const onSubmit: SubmitHandler<RegisterInfo> = (data) => {
     try {
       api.post('/user', data);

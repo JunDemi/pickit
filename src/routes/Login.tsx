@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../assets/styles/Login.scss';
-import { ReactComponent as Banner } from 'assets/images/banner.svg';
 import styled from 'styled-components';
+import { ReactComponent as Banner } from 'assets/images/banner.svg';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import api from 'service';
+import { useRecoilState } from 'recoil';
+import { atomAccessToken } from 'store/stateStore';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100vw;
   height: 100%;
   top: 0;
   position: absolute;
+  background-color: whitesmoke;
 `;
 
 const MainWrapper = styled.div`
@@ -25,12 +31,15 @@ const MainWrapper = styled.div`
 const BannerWrapper = styled.div`
   width: 60%;
   height: 60%;
+  background-color: white;
+  border: 4px solid black;
 `;
 
 const LoginFormWrapper = styled.div`
   width: 40%;
   height: 60%;
-  border: 1px solid black;
+  border: 4px solid black;
+  border-radius: 20px;
   margin-left: 50px;
   margin-right: 50px;
   padding: 50px 100px;
@@ -74,6 +83,7 @@ const InputSectionWrapper = styled.div`
   justify-content: center;
   margin-top: 50px;
 `;
+
 const InputBoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -104,7 +114,94 @@ const Input = styled.input`
   color: black;
 `;
 
+const InteractSectionWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 50px 30px;
+`;
+
+const InputButton = styled.input`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 1rem;
+
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+
+  display: inline-block;
+  width: auto;
+
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+const LoginButton = styled(InputButton)`
+  background-color: black;
+  color: white;
+  border: 0;
+  width: 100%;
+
+  &:hover {
+    background-color: rgb(85, 80, 80);
+  }
+`;
+
+const Description = styled.span`
+  margin: 60px 0px 20px 0px;
+`;
+
+const RegisterButton = styled(InputButton)`
+  background-color: black;
+  color: white;
+  border: 0;
+  width: 50%;
+
+  &:hover {
+    background-color: rgb(85, 80, 80);
+  }
+`;
+
+interface LoginInfo {
+  username: string;
+  password: string;
+}
+
 function Login() {
+  const navigate = useNavigate();
+
+  const [accessToken, setAccessToken] = useRecoilState(atomAccessToken);
+
+  const {
+    register,
+    handleSubmit,
+    // watch,
+    formState: { errors },
+  } = useForm<any>();
+
+  const onSubmit: SubmitHandler<LoginInfo> = async (data) => {
+    try {
+      let resData = await api.post('/auth/login', data);
+      const token = await resData.data.data.token;
+      setAccessToken(token);
+    } catch (error: any) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (accessToken) {
+      navigate('/');
+    }
+  }, [accessToken]);
+
   return (
     <Container>
       <MainWrapper>
@@ -112,7 +209,7 @@ function Login() {
           <Banner style={{ width: '100%', height: '100%' }} />
         </BannerWrapper>
         <LoginFormWrapper>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <LoginMainWrapper>
               <TitleSection>
                 <Title>로그인</Title>
@@ -125,7 +222,12 @@ function Login() {
               <InputSectionWrapper>
                 <InputBoxWrapper>
                   <InputBox>
-                    <Input type="text" placeholder="아이디" />
+                    <Input
+                      {...register('username', { required: true })}
+                      type="text"
+                      placeholder="아이디"
+                      aria-invalid={errors.username ? 'true' : 'false'}
+                    />
                     {/* <input
                       // {...register('email', { required: true })}
                       className="register-input"
@@ -133,22 +235,37 @@ function Login() {
                       // aria-invalid={errors.email ? 'true' : 'false'}
                     /> */}
                   </InputBox>
-                  <InputBox>
-                    <Input type="password" placeholder="패스워드" />
-                    {/* <input
-                      // {...register('email', { required: true })}
-                      className="register-input"
-                      type="text"
-                      // aria-invalid={errors.email ? 'true' : 'false'}
-                    /> */}
-                  </InputBox>
-                  {/* {errors.email?.type === 'required' && (
+                  {errors.username?.type === 'required' && (
                     <p className="alert" role="alert">
                       이메일을 입력하세요.
                     </p>
-                  )} */}
+                  )}
+                  <InputBox>
+                    <Input
+                      {...register('password', { required: true })}
+                      type="password"
+                      placeholder="패스워드"
+                      aria-invalid={errors.password ? 'true' : 'false'}
+                    />
+                    {/* <input
+                      // {...register('email', { required: true })}
+                      className="register-input"
+                      type="text"
+                      // aria-invalid={errors.email ? 'true' : 'false'}
+                    /> */}
+                  </InputBox>
+                  {errors.password?.type === 'required' && (
+                    <p className="alert" role="alert">
+                      패스워드를 입력하세요.
+                    </p>
+                  )}
                 </InputBoxWrapper>
               </InputSectionWrapper>
+              <InteractSectionWrapper>
+                <LoginButton type="submit" value={'로그인'} />
+                <Description> 이미 생성된 계정이 있으시다면?</Description>
+                <RegisterButton type="button" value={'계정 생성'} />
+              </InteractSectionWrapper>
             </LoginMainWrapper>
           </form>
         </LoginFormWrapper>
