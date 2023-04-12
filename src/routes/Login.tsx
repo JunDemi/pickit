@@ -215,6 +215,10 @@ function Login() {
     }
   };
 
+  const moveToRegister = () => {
+    navigate('/register');
+  };
+
   useEffect(() => {
     if (accessToken) {
       navigate('/');
@@ -283,7 +287,11 @@ function Login() {
               <InteractSectionWrapper>
                 <LoginButton type="submit" value={'로그인'} />
                 <Description> 이미 생성된 계정이 있으시다면?</Description>
-                <RegisterButton type="button" value={'계정 생성'} />
+                <RegisterButton
+                  type="button"
+                  value={'계정 생성'}
+                  onClick={moveToRegister}
+                />
               </InteractSectionWrapper>
             </LoginMainWrapper>
           </form>
