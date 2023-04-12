@@ -43,6 +43,9 @@ const LoginFormWrapper = styled.div`
   margin-left: 50px;
   margin-right: 50px;
   padding: 50px 100px;
+  @media (max-width: 1440px) {
+    padding: 15px 45px;
+  }
 `;
 
 const LoginMainWrapper = styled.div`
@@ -82,12 +85,20 @@ const InputSectionWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 50px;
+
+  @media (max-width: 1440px) {
+    margin-top: 20px;
+  }
 `;
 
 const InputBoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  @media (max-width: 1440px) {
+    width: 100%;
+  }
 `;
 
 const InputBox = styled.div`
@@ -100,6 +111,10 @@ const InputBox = styled.div`
 
   &:nth-child(n + 1) {
     margin-top: 10px;
+  }
+
+  @media (max-width: 1440px) {
+    padding: 10px;
   }
 `;
 
@@ -156,6 +171,10 @@ const LoginButton = styled(InputButton)`
 
 const Description = styled.span`
   margin: 60px 0px 20px 0px;
+
+  @media (max-width: 1440px) {
+    margin: 40px 0px 20px 0px;
+  }
 `;
 
 const RegisterButton = styled(InputButton)`
