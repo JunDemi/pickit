@@ -16,8 +16,7 @@ const Main = (): JSX.Element => {
     width: 100%;
     height: max-content;
     background-color: #f3f3f3;
-    padding: 3rem;
-    margin: 2rem 0;
+    padding: 6.25rem 0;
 
     @media screen and (max-width: 1200px) {
       padding: 0;

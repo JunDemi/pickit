@@ -3,33 +3,129 @@
 .Banner-container {
   position: relative;
   width: 100%;
-  height: 50vh;
+  height: 35rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 12.5rem;
   background-color: #f3f3f3;
 
   .popular-chartBox {
     position: relative;
-    width: 25rem;
+    width: 25%;
     height: 100%;
     // background-color: #000;
-    border: 1px solid black;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
     z-index: 2;
   }
-  .Banner-slider {
-    position: relative;
-    width: 70rem;
-    height: 100%;
-    overflow: hidden;
-    border: 4px solid #000;
 
-    video {
-      position: absolute;
+  .Notice-Slider{
+    position: relative;
+    width : 70%;
+    height : 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .Notice-Index{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width : 100%;
+      height : 15%;
+      background-color: #fff;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+      .Index-titleBox{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width : 15%;
+        height: 100%;
+
+        .Index-icon{
+          width : 5rem;
+          height: 100%;
+          font-size: 2rem;
+          line-height: 5rem;
+          text-align: center;
+        }
+
+        .Index-title{
+          width : 6.25rem;
+          height: 100%;
+          line-height: 5rem;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+
+      .Notice-titleBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+        height: 100%;
+        padding : 0 50px;
+
+        .Notice-title{
+          width : 80%;
+          height : 100%;
+          line-height: 5rem;
+          font-size: 1rem;
+          font-weight: 800;
+          color: #5C5C5C;
+
+          &:hover{
+            text-decoration: underline;
+            transition: all 0.5s ease-in;
+            cursor: pointer;
+          }
+        }
+
+        .Notice-Date{
+          width : 20%;
+          height : 100%;
+          line-height: 5rem;
+          font-size: 1rem;
+          font-weight: 800;
+          color: #5C5C5C;
+          text-align: center;
+        }
+      }
+
+      .View-More{
+        width: 15%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 13px;
+
+        span{
+          cursor: pointer;
+        }
+      }
+    }
+
+    .Banner-slider{
+      position: relative;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: 80%;
+      background-color: #fff;
+      overflow: hidden;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+
+      video{
+        position: absolute;
+        top: 0;
+        left : 0;
+        width : 100%;
+        height : 100%;
+        object-fit: cover;
+      }
     }
   }
 }
@@ -52,9 +148,8 @@
     .Banner-slider {
       position: relative;
       width: 100%;
-      height: 90%;
+      height: 100%;
       overflow: hidden;
-      border: none;
 
       video {
         position: absolute;
