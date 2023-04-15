@@ -1,9 +1,8 @@
 import '../../assets/styles/worldcupcards.scss';
-import listData from '../../worldCupList.json';
-import React from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import axios from 'axios';
 
-/*
-interface list {
+export interface list {
   id: number;
   name: string;
   tag: string;
@@ -12,7 +11,6 @@ interface list {
   title: string;
   info: string;
 }
-*/
 
 export interface worldcup {
   id: number;
@@ -22,6 +20,59 @@ export interface worldcup {
 }
 
 function WorldCupCards(): JSX.Element {
+  const [WorldCupData, setWorldCupData] = useState<worldcup[]>([]);
+  const [loadData, setLoadData] = useState<list[]>([]);
+  const [hasNextPage, setHasNextPage] = useState<boolean>(true);
+  const fetchRef = useRef(null);
+  const page = useRef<number>(1);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    async function getWorldCup() {
+      try {
+        const response = await axios.get('http://localhost:3080/WorldCup');
+
+        setWorldCupData(response.data);
+      } catch (e: any) {
+        console.log(e);
+      }
+    }
+    getWorldCup();
+  }, []);
+
+  const fetch = useCallback(async () => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:3080/WorldCupList?_limit=4&_page=${page.current}`,
+      );
+      setLoadData((prev) => [...prev, ...data]);
+      setHasNextPage(data.length === 4);
+      if (data.length) {
+        page.current += 1;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!fetchRef.current || !hasNextPage) return;
+
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setLoading(true);
+        setTimeout(() => {
+          fetch();
+        }, 1000);
+      }
+    });
+    io.observe(fetchRef.current);
+
+    return () => {
+      io.disconnect();
+      setLoading(false);
+    };
+  }, [fetch, hasNextPage]);
   return (
     <div className="WorldCupCards-container">
       <div className="WorldCupCards-header">
@@ -42,9 +93,9 @@ function WorldCupCards(): JSX.Element {
       </div>
 
       <div className="WorldCupCards-section">
-        {listData.WorldCupList.map((item) => {
-          const filterSinger: worldcup[] = listData.WorldCup.filter(
-            (Worldcup) => Worldcup.title === item.title,
+        {loadData.map((item) => {
+          const filterSinger: worldcup[] = WorldCupData.filter(
+            (listData) => listData.title === item.title,
           );
 
           return (
@@ -82,6 +133,12 @@ function WorldCupCards(): JSX.Element {
           );
         })}
       </div>
+      {loading ? (
+        <div className="Loading">
+          <span></span>
+        </div>
+      ) : null}
+      <div ref={fetchRef} />
     </div>
   );
 }

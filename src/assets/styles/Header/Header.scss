@@ -5,13 +5,13 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 12vh;
+  height: 100px;
   display: flex;
   justify-content: space-between;
-  padding: 0 10rem;
+  padding: 0 100px;
   align-items: center;
   background-color: #fff;
-  z-index: 10;
+  z-index: 20;
   box-shadow: 0 0 2px rgba($color: #000000, $alpha: 0.5);
 
   .logo {
@@ -27,8 +27,8 @@
 
   .Header-Menu {
     position: relative;
-    width: 40rem;
-    height: 10vh;
+    width: 59rem;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,11 +37,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: calc(40rem / 3);
+      width: calc(59rem / 3);
       height: 100%;
 
       span {
-        width: 5rem;
+        width: max-content;
         height: 4rem;
         line-height: 4rem;
         font-size: 1rem;

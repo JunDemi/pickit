@@ -25,6 +25,9 @@ function Header({ setShowSide }: stateRule): JSX.Element {
         <li>
           <span>키워드 검색</span>
         </li>
+        <li>
+          <span>문의하기</span>
+        </li>
       </ul>
 
       <div className="Popup-container">
