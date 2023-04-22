@@ -1,7 +1,10 @@
 export function isLogin() {
-  const { token } = JSON.parse(localStorage.getItem('recoil-persist') || '');
+  const { accessToken } = JSON.parse(
+    // eslint-disable-next-line no-undef
+    localStorage.getItem('recoil-persist') || '',
+  );
 
-  if (token) {
+  if (accessToken) {
     return true;
   } else {
     return false;

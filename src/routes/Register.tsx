@@ -26,6 +26,7 @@ function Register() {
   const onSubmit: SubmitHandler<RegisterInfo> = async (data) => {
     try {
       await api.post('/user', data);
+      // eslint-disable-next-line no-undef
       location.href = '/login';
     } catch (error: any) {
       console.error(error.message);

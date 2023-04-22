@@ -1,13 +1,15 @@
 import React from 'react';
 import { stateRule } from 'routes/Home';
 import { FiMenu } from 'react-icons/fi';
-// import Notify from './Notify';
-// import MyInfo from './MyInfo';
+import Notify from './Notify';
+import MyInfo from './MyInfo';
 import 'assets/styles/Header/Header.scss';
 import { useNavigate } from 'react-router-dom';
+import { isLogin } from 'modules';
 
 function Header({ setShowSide }: stateRule): JSX.Element {
   const navigate = useNavigate();
+  const loginCheck = isLogin();
 
   return (
     <div className="Header-container">
@@ -30,18 +32,21 @@ function Header({ setShowSide }: stateRule): JSX.Element {
         </li>
       </ul>
 
+      {/* 알림팝업 */}
+      {/* 프로필팝업 */}
       <div className="Popup-container">
-        <div className="sign-wrapper">
-          <span onClick={() => navigate('/register')}>Sign up</span>
-          <span>/</span>
-          <span onClick={() => navigate('/login')}>Sign in</span>
-        </div>
-
-        {/* 알림팝업 */}
-        {/* <Notify /> */}
-
-        {/* 프로필팝업 */}
-        {/* <MyInfo /> */}
+        {loginCheck ? (
+          <>
+            <Notify />
+            <MyInfo />
+          </>
+        ) : (
+          <div className="sign-wrapper">
+            <span onClick={() => navigate('/register')}>Sign up</span>
+            <span>/</span>
+            <span onClick={() => navigate('/login')}>Sign in</span>
+          </div>
+        )}
       </div>
 
       <div
